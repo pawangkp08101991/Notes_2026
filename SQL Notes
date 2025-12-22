@@ -1,0 +1,1156 @@
+SQL
+==============
+
+SQL (Structured Query Language) is the standard language for managing relational databases, used to create, read, update, and delete (CRUD) data, define database structures (tables, schemas), and control data access, making it essential for websites, apps, and data analysis to efficiently store, retrieve, and manipulate large datasets. 
+What is SQL?
+•	A Language for Databases: SQL is a domain-specific programming language designed to communicate with databases, allowing users to issue commands.
+•	Relational Focus: It primarily works with relational databases (RDBMS), which organize data into tables with rows and columns, like spreadsheets.
+•	Standard & Versatile: It's an ANSI standard, supported by major database systems (MySQL, PostgreSQL, SQL Server, Oracle) and used across industries. 
+Why is it used?
+•	Data Management (CRUD): Perform fundamental data operations:
+o	Create: INSERT new records, CREATE TABLE.
+o	Read (Query): SELECT specific data using WHERE clauses.
+o	Update: UPDATE existing records.
+o	Delete: DELETE records or tables.
+•	Data Retrieval & Analysis: Extract insights, filter, sort, and join data from different tables for reporting and analysis.
+•	Backend Operations: Powers data storage and processing for countless applications, from banking apps (Revolut) to social media (Instagram).
+•	Database Structuring: Define, modify, and maintain the structure (schema) of databases and tables.
+•	Security & Permissions: Control who can access or modify specific data.
+
+SQL is a standard language for managing relational databases, while MySQL is a specific, open-source relational database management system (RDBMS) that uses SQL as its primary query language. 
+Essentially, you use the SQL language to interact with a database system like MySQL. 
+Key Differences
+Parameter 	SQL (Structured Query Language)	MySQL
+Type	A programming language.	A Relational Database Management System (RDBMS), which is a software product.
+Function	Provides the commands (like SELECT, INSERT, UPDATE) to manage and query data.	Stores, manages, and organizes data in a structured manner using the SQL language.
+Updates	A standardized language that changes very little and rarely receives updates.	A software product that is frequently updated with new features and enhancements.
+Portability	The core syntax is standardized and works across many RDBMS platforms (Oracle, SQL Server, MySQL, etc.).	A specific system with its own implementation and unique features, although it is cross-platform compatible (Windows, Linux, macOS).
+Licensing	Not subject to licensing as it is a language standard.	Open-source and free to use, though commercial licenses with dedicated
+
+Primary Key
+A primary key is a column (or combination of columns) that uniquely identifies each row in a table.
+Key characteristics:
+•	Unique: No two rows can have the same primary key value
+•	Not NULL: Every row must have a value
+•	Stable: Should not change over time
+Example:
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100)
+);
+Here, student_id uniquely identifies each student.
+________________________________________
+Foreign Key
+A foreign key is a column (or combination of columns) that references the primary key of another table. It creates a relationship between tables and enforces referential integrity.
+Key characteristics:
+•	Values must exist in the referenced table’s primary key (or be NULL, if allowed)
+•	Ensures valid relationships between tables
+Example:
+CREATE TABLE Enrollments (
+    enrollment_id INT PRIMARY KEY,
+    student_id INT,
+    course_id INT,
+    FOREIGN KEY (student_id) REFERENCES Students(student_id)
+);
+Here, student_id in Enrollments is a foreign key that links each enrollment to a valid student.
+________________________________________
+• Primary Key → Uniquely identifies a record in a table
+• Foreign Key → Links one table to another by referencing a primary key
+
+A UNIQUE constraint enforces uniqueness on one or more columns in a table.
+Example 1: UNIQUE on a Single Column
+CREATE TABLE Employees (
+    emp_id INT PRIMARY KEY,
+    email VARCHAR(100) UNIQUE,
+    name VARCHAR(50)
+);
+What this means:
+•	emp_id uniquely identifies each employee (primary key)
+•	email must be unique for every employee
+
+
+The primary difference is that the WHERE clause filters individual rows before any grouping or aggregation occurs, while the HAVING clause filters groups of rows after they have been processed by a GROUP BY clause and aggregate functions. 
+Key Differences between WHERE and HAVING
+Criteria 	WHERE Clause	HAVING Clause
+Purpose	Filters individual records (rows) from a table.	Filters groups of records based on aggregate conditions.
+Aggregate Functions	Cannot contain conditions with aggregate functions (e.g., COUNT(), SUM(), AVG()).	Must be used for conditions involving aggregate functions.
+Usage without GROUP BY	Can be used without a GROUP BY clause.	Generally used with a GROUP BY clause (though some SQL versions allow it without, treating the entire table as one group).
+Position	Appears before the GROUP BY clause in a query.	Appears after the GROUP BY clause.
+Speed	Generally faster as it reduces the number of rows before aggregation.	Slower as it filters the results after the data has been aggregated.
+Statements	Can be used with SELECT, UPDATE, and DELETE statements.	Can only be used with the SELECT statement.
+Example Scenarios
+•	Using WHERE: To find employees from a specific department (filtering individual rows based on a non-aggregated column).
+sql
+SELECT * FROM employees WHERE department = 'Sales';
+•	Using HAVING: To find departments that have more than 10 employees (filtering grouped results based on an aggregate function).
+sql
+SELECT department, COUNT(employee_id)
+FROM employees
+GROUP BY department
+HAVING COUNT(employee_id) > 10;
+•	Using Both: To find sales departments with more than 10 employees.
+sql
+SELECT department, COUNT(employee_id)
+FROM employees
+WHERE department = 'Sales' -- Filters rows before grouping
+GROUP BY department
+HAVING COUNT(employee_id) > 10; -- Filters the resulting group
+A JOIN in SQL combines rows from two or more tables based on a related column, creating a new, temporary table for querying, with common types including INNER (matching rows only), LEFT (all left + matching right), RIGHT (all right + matching left), FULL (all rows from both), CROSS (Cartesian product), and SELF (joining a table to itself). These allow you to retrieve related data efficiently, supporting database normalization by reducing redundancy.  
+Common Types of SQL Joins
+1.	INNER JOIN:
+•	Purpose: Returns only the rows that have matching values in both tables. 
+•	Example: Finding customers who have actually placed orders.
+2.	LEFT (OUTER) JOIN:
+•	Purpose: Returns all rows from the left table and the matched rows from the right table; unmatched right-side columns are NULL. 
+•	Example: Listing all employees and their departments, even if some employees aren't assigned to a department.
+3.	RIGHT (OUTER) JOIN:
+•	Purpose: Returns all rows from the right table and matched rows from the left table; unmatched left-side columns are NULL. 
+•	Example: Listing all departments and their employees, including departments with no employees.
+4.	FULL (OUTER) JOIN:
+•	Purpose: Returns all rows when there's a match in either the left or right table, with NULLs for non-matching sides. 
+•	Example: Combining customer and supplier lists to see all entries from both, regardless of matches.
+Other Important Joins
+•	CROSS JOIN:
+•	Purpose: Creates the Cartesian product (all possible combinations) of rows from both tables. 
+•	Use: Generating all product-category combinations.
+•	SELF JOIN:
+•	Purpose: Joins a table to itself, treating it as two separate tables. 
+•	Use: Finding employees who report to the same manager within the same table. 
+•	NATURAL JOIN:
+•	Purpose: Automatically joins tables on columns that have the exact same name and data type, without needing an ON clause. 
+
+
+ 
+
+
+1. What is a Table?
+A table is a physical storage structure in a database.
+Stores actual data on disk
+Can be modified (INSERT, UPDATE, DELETE)
+Has indexes, constraints, and relationships
+Example Table
+CREATE TABLE Employees (
+    EmpID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Salary DECIMAL(10,2),
+    Department VARCHAR(50)
+);
+2. What is a View?
+A view is a virtual table based on a SQL query.
+Does not store data physically (except materialized views)
+Shows data dynamically from underlying tables
+Often used for security, simplification, or abstraction
+Example view
+CREATE VIEW HighSalaryEmployees AS
+SELECT Name, Salary
+FROM Employees
+WHERE Salary > 5000;
+
+This view does not store the data; it shows results from the Employees table.
+Table = actual data storage
+View = virtual table showing data through a SELECT query
+Views help with security, simplicity, and logical separation
+Where is a view stored?
+
+Data is NOT stored A normal SQL view (non-materialized) does not store its own data.
+Every time you run:
+
+SELECT * FROM HighSalaryEmployees;
+The database simply re-runs the underlying query:
+SELECT Name, Salary
+FROM Employees
+WHERE Salary > 5000;
+So the data comes directly from the Employees table.
+
+What is stored?
+The database stores only the view definition:
+CREATE VIEW HighSalaryEmployees AS
+SELECT Name, Salary
+FROM Employees
+WHERE Salary > 5000;
+This is saved in system catalog tables such as:
+SQL Server: sys.views and sys.sql_modules
+MySQL: information_schema.VIEWS
+PostgreSQL: pg_views
+Virtual Table
+"Virtual table" is a concept, not a specific object type in SQL.
+A Virtual Table means any result set that behaves like a table but does not physically store data.
+Examples of Virtual Tables:
+Views
+CTEs (Common Table Expressions)
+WITH CTE AS (SELECT * FROM Employee)
+SELECT * FROM CTE;
+Derived tables / subqueries
+SELECT * FROM (SELECT * FROM Employee) AS T;
+System virtual tables (like inserted and deleted in triggers)
+Table-valued functions
+So a View is one type of Virtual Table, but not the only type.
+Feature	SQL View	Virtual Table (general)
+Type	Real database object	Conceptual/output table
+Stored in DB?	Yes (only query, not data)	No (created at runtime)
+Usage	Security, reusability, abstraction	Intermediate processing, temporary datasets
+Examples	CREATE VIEW v1	CTEs, subqueries, derived tables
+
+
+Difference between #Pawan and ##Pawan: 
+#Pawan → Local Temporary Table
+Example :
+CREATE TABLE #Pawan (Id INT, Name VARCHAR(50));
+Key Points
+Scope is only the current session/connection.
+Only your query window can access it.
+Automatically removed when:
+Your session ends
+Or you drop it manually
+Multiple users can create their own #Pawan without conflict (each gets a private version).
+##Pawan → Global Temporary Table
+Example
+CREATE TABLE ##Pawan (Id INT, Name VARCHAR(50));
+Key Points
+Scope is all sessions (global).
+Any user or session can access it until:
+Your creating session ends AND
+No other session is using it
+Only one global table with that name can exist in the whole server.
+Feature	#Pawan (Local Temp Table)	##Pawan (Global Temp Table)
+Scope	Only the current session	All sessions on SQL Server
+Visibility	Private to the creator	Public for every session
+Lifetime	Ends with session	Ends when no sessions are using it
+Name conflict	No conflict (private per session)	Name must be unique on server
+Speed	Slightly faster	Slightly slower due to global scope
+
+
+#Pawan (Local Temporary Table) vs ##Pawan (Global Temporary Table)
+✅ 1. Visibility (Scope)
+#Pawan: Visible only to the session/connection that created it.
+##Pawan: Visible to all sessions on the SQL Server.
+________________________________________
+✅ 2. Lifetime
+#Pawan: Automatically deleted when the session ends.
+##Pawan: Deleted when creating session ends AND no other session is using it.
+________________________________________
+✅ 3. Access
+#Pawan: Only the creator session can access it.
+##Pawan: Any session can access it (after creation).
+________________________________________
+✅ 4. Name Conflict
+#Pawan: Multiple users can create their own #Pawan in parallel — no conflict.
+##Pawan: Only one ##Pawan table can exist system-wide. Name must be unique.
+________________________________________
+✅ 5. Storage Location
+Both are stored in TempDB, but:
+#Pawan: Stored with a unique internal name like #Pawan_____________________123.
+##Pawan: Stored with exact name ##Pawan.
+________________________________________
+✅ 6. Performance
+#Pawan: Slightly faster (session-local, fewer locks).
+##Pawan: Slightly slower (visible globally → more locking and lookup).
+________________________________________
+✅ 7. Use Cases
+#Pawan:
+Storing temp data inside procedures
+Complex query processing
+Session-specific data
+##Pawan:
+Sharing temp data between multiple users
+Debugging/testing across sessions
+Data needed by multiple SPs concurrently
+________________________________________
+✅ 8. Behavior in Stored Procedures
+#Pawan: Local to the stored procedure, removed when the procedure ends (unless created outside).
+##Pawan: Can be reused by multiple procedures across sessions.
+________________________________________
+✅ 9. Locking
+#Pawan: Minimum locking (isolated to session).
+##Pawan: More locking due to multi-session access.
+Feature	#Pawan (Local Temp)	##Pawan (Global Temp)
+Scope	Current session only	All sessions
+Lifetime	Ends with session	Ends when all sessions stop using it
+Visibility	Private	Public / Global
+Name conflict	No	Yes, only one name allowed
+Stored in	tempdb (unique internal name)	tempdb (same name globally)
+Performance	Slightly faster	Slightly slower
+Use Cases	Individual queries, procedures	Multi-user scenarios
+Created by	Any session	Any session
+Access by others	No	Yes
+Locking	Low	High
+
+
+
+
+
+ALL SQL OBJECTS (Complete List)
+✅ 1. Database Objects
+These define the structure of the database.
+Database
+Schema
+________________________________________
+✅ 2. Table Objects
+Tables (Permanent tables)
+Temporary Tables
+#LocalTempTable
+##GlobalTempTable
+Table Variables
+DECLARE @tableVar TABLE (...)
+________________________________________
+✅ 3. Keys & Constraints
+Used for integrity and validation.
+Primary Key
+Foreign Key
+Unique Key
+Check Constraint
+Default Constraint
+Not Null Constraint
+________________________________________
+✅ 4. Index Objects
+Used for performance tuning.
+Clustered Index
+Non-Clustered Index
+Unique Index
+Filtered Index
+Columnstore Index
+XML Index
+Spatial Index
+Full-Text Index
+________________________________________
+✅ 5. View Objects
+View
+Indexed View (Materialized View)
+________________________________________
+✅ 6. Programmable Objects
+These contain logic/business rules.
+Stored Procedures
+Functions
+Scalar Function
+Table-Valued Function (Inline & Multi-Statement)
+Triggers
+AFTER Trigger
+INSTEAD OF Trigger
+________________________________________
+✅ 7. Programmability Helpers
+Synonyms → Shortcut name for another object
+Sequences → Auto number generator
+Rules (Deprecated, legacy)
+Defaults (Deprecated)
+________________________________________
+✅ 8. Temporary & Virtual Objects
+CTE (Common Table Expression) → Virtual table
+Derived Tables
+Subqueries
+Table Variables
+Cursor Objects
+________________________________________
+✅ 9. Service Broker Objects (Advanced)
+Message Types
+Contracts
+Queues
+Services
+Routes
+________________________________________
+✅ 10. Security Objects
+Logins
+Users
+Roles
+Certificates
+Keys
+Credentials
+Permissions
+________________________________________
+✅ 11. File & Storage Objects
+Data Files (.mdf)
+Log Files (.ldf)
+Filegroups
+Partition Functions
+Partition Schemes
+________________________________________
+✅ 12. Replication Objects (Advanced)
+Publisher
+Subscriber
+Distributor
+Articles
+Publications
+Subscriptions
+1. Database Objects
+These define the main structure of SQL Server.
+A. Database
+CREATE DATABASE MyCompanyDB;
+B. Schema
+A schema is a container for tables, views, SPs etc.
+CREATE SCHEMA hr;
+Create table inside schema:
+CREATE TABLE hr.Employee (Id INT, Name VARCHAR(50));
+________________________________________
+✅ 2. Table Objects
+A. Permanent Table
+CREATE TABLE Employees (
+    EmpId INT PRIMARY KEY,
+    Name VARCHAR(50)
+);
+B. Local Temporary Table (#)
+CREATE TABLE #Temp1 (Id INT, Name VARCHAR(50));
+Scope: Only current session.
+C. Global Temporary Table (##)
+CREATE TABLE ##TempGlobal (Id INT, Name VARCHAR(50));
+Scope: All sessions.
+D. Table Variable
+DECLARE @EmpTable TABLE (Id INT, Name VARCHAR(50));
+INSERT INTO @EmpTable VALUES (1, 'Aman');
+________________________________________
+✅ 3. Keys & Constraints
+A. Primary Key
+CREATE TABLE Department (
+    DeptId INT PRIMARY KEY,
+    DeptName VARCHAR(50)
+);
+B. Foreign Key
+CREATE TABLE Employee (
+    EmpId INT PRIMARY KEY,
+    DeptId INT FOREIGN KEY REFERENCES Department(DeptId)
+);
+C. Unique Key
+ALTER TABLE Employee ADD CONSTRAINT UQ_Email UNIQUE (Email);
+D. Check Constraint
+ALTER TABLE Employee ADD CONSTRAINT CK_Salary CHECK (Salary > 0);
+E. Default Constraint
+ALTER TABLE Employee ADD CONSTRAINT DF_JoinDate DEFAULT GETDATE() FOR JoinDate;
+F. NOT NULL
+CREATE TABLE Test (
+    Id INT NOT NULL,
+    Name VARCHAR(50) NOT NULL
+);
+________________________________________
+✅ 4. Index Objects
+A. Clustered Index
+CREATE CLUSTERED INDEX IX_EmpId ON Employees(EmpId);
+B. Non-Clustered Index
+CREATE NONCLUSTERED INDEX IX_Name ON Employees(Name);
+C. Unique Index
+CREATE UNIQUE INDEX IX_Email ON Employees(Email);
+D. Filtered Index
+CREATE INDEX IX_ActiveEmployees ON Employees(Status) WHERE Status = 'Active';
+E. Columnstore Index
+CREATE CLUSTERED COLUMNSTORE INDEX CCI_Employees ON Employees;
+F. XML Index
+Used on XML columns.
+G. Spatial Index
+Used for geo data types.
+H. Full-Text Index
+Used for fast text searches.
+________________________________________
+✅ 5. View Objects
+A. View
+CREATE VIEW vw_ActiveEmployees AS
+SELECT EmpId, Name FROM Employees WHERE Status = 'Active';
+B. Indexed View
+CREATE VIEW vw_Sales WITH SCHEMABINDING AS
+SELECT ProductId, SUM(Amount) AS TotalAmount
+FROM dbo.Sales
+GROUP BY ProductId;
+
+CREATE UNIQUE CLUSTERED INDEX IX_View ON vw_Sales(ProductId);
+________________________________________
+✅ 6. Programmable Objects
+A. Stored Procedure
+CREATE PROCEDURE GetEmployees
+AS
+SELECT * FROM Employees;
+B. Scalar Function
+CREATE FUNCTION fn_GetSalary(@EmpId INT)
+RETURNS INT AS
+BEGIN
+    RETURN (SELECT Salary FROM Employees WHERE EmpId = @EmpId);
+END;
+C. Table-Valued Function
+CREATE FUNCTION fn_GetDeptEmployees(@DeptId INT)
+RETURNS TABLE
+AS
+RETURN (SELECT * FROM Employees WHERE DeptId = @DeptId);
+D. Trigger
+AFTER Trigger
+CREATE TRIGGER trg_AfterInsert
+ON Employees
+AFTER INSERT
+AS
+PRINT 'Row Inserted';
+INSTEAD OF Trigger
+CREATE TRIGGER trg_InsteadOfDelete
+ON Employees
+INSTEAD OF DELETE
+AS
+PRINT 'Delete operation blocked';
+________________________________________
+✅ 7. Programmability Helpers
+A. Synonym
+Shortcut name for another object.
+CREATE SYNONYM EmpTable FOR dbo.Employees;
+B. Sequence
+CREATE SEQUENCE EmpSeq START WITH 1 INCREMENT BY 1;
+________________________________________
+✅ 8. Temporary & Virtual Objects
+A. CTE
+WITH EmpCTE AS (SELECT * FROM Employees)
+SELECT * FROM EmpCTE;
+B. Derived Table
+SELECT * FROM (SELECT * FROM Employees) AS T;
+C. Subquery
+SELECT * FROM Employees WHERE DeptId = (SELECT DeptId FROM Department WHERE DeptName = 'HR');
+D. Cursor
+DECLARE emp_cursor CURSOR FOR SELECT EmpId FROM Employees;
+________________________________________
+✅ 9. Service Broker Objects (Advanced)
+Message Type
+Contract
+Queue
+Service
+Route
+Used for asynchronous messaging inside SQL Server.
+________________________________________
+✅ 10. Security Objects
+Login
+CREATE LOGIN Pawan WITH PASSWORD = '123';
+User
+CREATE USER Pawan FOR LOGIN Pawan;
+Role
+CREATE ROLE Manager;
+Permissions
+GRANT SELECT ON Employees TO Pawan;
+________________________________________
+✅ 11. File & Storage Objects
+Data File
+.mdf file
+Log File
+.ldf
+Filegroup
+ALTER DATABASE MyCompanyDB ADD FILEGROUP FG1;
+Partition Function
+CREATE PARTITION FUNCTION pfSales(INT) AS RANGE LEFT FOR VALUES (1000, 2000);
+Partition Scheme
+CREATE PARTITION SCHEME psSales AS PARTITION pfSales TO (FG1, FG2, FG3);
+________________________________________
+✅ 12. Replication Objects (Advanced)
+Publisher
+Subscriber
+Distributor
+Articles
+Publication
+Subscription
+Used for data replication across servers.
+
+
+
+✅ 1. How do you find slow-running queries in SQL Server?
+Answer:
+Use SQL Server Dynamic Management Views (DMVs):
+SELECT 
+    qs.total_elapsed_time/qs.execution_count AS AvgTime,
+    qs.execution_count,
+    qp.query_plan,
+    qt.text
+FROM sys.dm_exec_query_stats qs
+CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) qt
+CROSS APPLY sys.dm_exec_query_plan(qs.plan_handle) qp
+ORDER BY AvgTime DESC;
+Also use:
+Profiler / Extended Events
+Execution Plans
+sys.dm_tran_locks for blocking
+________________________________________
+✅ 2. Difference between DELETE, TRUNCATE, and DROP (deep level)?
+DELETE
+Row-level logging
+Slower
+Triggers fire
+Can have WHERE
+Locks rows
+TRUNCATE
+Page-level logging → Very fast
+Resets identity
+No WHERE
+Requires higher permission
+No triggers
+DROP
+Removes table structure
+Cannot rollback
+________________________________________
+✅ 3. How do you optimize a slow query?
+Steps:
+Check execution plan
+Add missing indexes
+Remove unnecessary functions on columns
+Avoid SELECT *
+Replace correlated subqueries with JOINs
+Use proper WHERE order
+Avoid CURSORS → use set-based queries
+Use table partitioning for large data
+Update statistics
+Check for blocking/deadlocks
+________________________________________
+✅ 4. What are Deadlocks? How do you detect and fix them?
+Deadlock:
+Two sessions waiting for each other’s locked resource → both cannot proceed.
+Detect
+SELECT * FROM sys.dm_tran_locks;
+Or enable deadlock graph in Extended Events.
+Fix
+Keep same locking order
+Use NOLOCK when appropriate
+Reduce transaction scope
+Index properly → avoid table scans
+Use row-level locking hints like:
+WITH (ROWLOCK)
+________________________________________
+✅ 5. What is the difference between Clustered, Nonclustered, and Columnstore indexes?
+Clustered Index
+Sorts the actual data pages physically
+Only one per table
+Best for range queries
+Nonclustered Index
+Separate structure
+Can have multiple
+Points to clustered index or heap
+Columnstore Index
+Column-wise storage
+Excellent for analytics & reporting
+Reduces I/O massively
+________________________________________
+✅ 6. Explain SQL Server Isolation Levels with real example.
+Isolation Levels
+READ UNCOMMITTED → Dirty reads ok
+READ COMMITTED → Default, no dirty reads
+REPEATABLE READ → No dirty, no non-repeatable
+SNAPSHOT → Uses row-versioning (tempdb)
+SERIALIZABLE → Highest, locks entire range
+Real Example:
+Bank transferring money:
+Avoiding dirty read is mandatory → use READ COMMITTED / SERIALIZABLE.
+Large reporting queries → use SNAPSHOT to avoid blocking.
+________________________________________
+✅ 7. What is the difference between Temporary Table & Table Variable at deeper level?
+Feature	Temp Table	Table Variable
+Statistics	✔ Available	❌ No
+Indexes	✔ Custom Indexes	Limited
+Performance (Large Data)	Faster	Slower
+Scope	Session	Batch
+Used Inside SP	Yes	Yes
+Recompilation	Yes	No
+Conclusion:
+Use temp table for large datasets.
+Use table variable for small datasets.
+________________________________________
+✅ 8. What is Query Execution Plan? How do you analyze it?
+Execution plan shows how SQL Server executes your query:
+Key things to analyze:
+Index Seek (Good)
+Index Scan / Table Scan (Bad)
+Key Lookup (Fix by covering index)
+Hash Match (Heavy)
+Sort Operations (Can be optimized)
+________________________________________
+✅ 9. What is Partitioning? Why use it?
+Partitioning splits a large table into smaller chunks (horizontally).
+Benefits:
+Faster reads
+Faster deletes/truncates (per partition)
+Better manageability
+Parallelism
+Example:
+Split data by years:
+CREATE PARTITION FUNCTION pfYear (INT)
+AS RANGE RIGHT FOR VALUES (2018, 2019, 2020, 2021);
+________________________________________
+✅ 10. Explain ACID Properties with real-time examples.
+Atomicity
+Transaction all-or-nothing (bank transfer).
+Consistency
+Always keep data valid (constraints).
+Isolation
+Transactions don’t affect each other.
+Durability
+Committed data is never lost (WAL logs).
+________________________________________
+✅ 11. What is a Cursor? Why is it bad?
+Cursor = Row-by-row processing
+SQL works best in set-based operations.
+Issues:
+Slow
+Heavy memory
+Locks
+Use when:
+Complex row-by-row logic.
+________________________________________
+✅ 12. Write a query to find duplicate records.
+SELECT Name, COUNT(*)
+FROM Employees
+GROUP BY Name
+HAVING COUNT(*) > 1;
+________________________________________
+✅ 13. How do you handle large data loads?
+Techniques:
+BULK INSERT
+BCP
+SSIS
+Staging tables
+Minimal logging with TABLOCK
+Partition switching
+________________________________________
+✅ 14. Difference between UNION and UNION ALL?
+UNION	UNION ALL
+Removes duplicates	Keeps duplicates
+Sorting required	No sorting
+Slower	Faster
+________________________________________
+✅ 15. What is NOLOCK? Should we use it?
+NOLOCK = READ UNCOMMITTED
+Allows:
+Dirty reads
+Phantom reads
+Non-repeatable reads
+Use for:
+Reporting workloads
+When slight data inconsistencies acceptable
+Never use for:
+Financial transactions
+Inventory systems
+________________________________________
+✅ 16. What is an Indexed View?
+View with physical storage + indexes.
+Benefits:
+Faster aggregates
+Pre-computed results
+Used in reporting
+Requirement:
+WITH SCHEMABINDING
+________________________________________
+✅ 17. How do you improve performance of a JOIN?
+Add indexes on join columns
+Avoid functions on join columns
+Prefer INNER over OUTER when possible
+Ensure same datatype on both sides
+Avoid casting
+________________________________________
+✅ 18. What are Common Table Expressions (CTEs)? Why use them?
+WITH EmpCTE AS (
+  SELECT *, ROW_NUMBER() OVER (ORDER BY Id) AS RN
+  FROM Employees
+)
+SELECT * FROM EmpCTE WHERE RN BETWEEN 10 AND 20;
+Benefits:
+Readability
+Recursive queries
+Paging
+________________________________________
+✅ 19. How do you find missing indexes?
+SELECT * 
+FROM sys.dm_db_missing_index_details;
+________________________________________
+✅ 20. What is the difference between OLTP and OLAP?
+OLTP	OLAP
+Transactional	Analytical
+Small queries	Large queries
+Many writes	Mostly reads
+Normalized	Denormalized
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.NET MVC CORE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Kestrel is the default, lightweight, cross-platform web server for ASP.NET Core applications, designed for speed and scalability, running on Windows, Linux, and macOS. It handles incoming HTTP requests, processes them via the ASP.NET Core middleware pipeline, and sends responses, making it excellent for development and modern deployments, often used behind a reverse proxy (like Nginx or IIS) for production security and features. 
+Key Characteristics
+•	Cross-Platform: Runs anywhere .NET Core runs (Windows, Linux, macOS).
+•	Lightweight & Fast: Built for high performance and low overhead.
+•	Default Server: Included and enabled by default in ASP.NET Core project templates.
+•	Handles Core Tasks: Listens for requests, manages HTTP context, and routes to your app.
+•	Production Ready (with Proxy): While it can be an edge server, it's often paired with a reverse proxy for load balancing, SSL termination, and advanced routing in production. 
+How it Works
+1.	Listens for Requests: Kestrel starts and listens on specified ports (e.g., http://localhost:5136).
+2.	Receives & Parses: It receives raw HTTP requests from clients.
+3.	Creates HTTP Context: It builds an HttpContext object containing request details.
+4.	Routes to Application: Forwards the context to your ASP.NET Core application's middleware pipeline for processing.
+5.	Sends Response: Takes the generated response and sends it back to the client. 
+Kestrel vs. Other Servers (IIS)
+•	Kestrel: Modern, cross-platform, lightweight, integrated with ASP.NET Core.
+•	IIS (Internet Information Services): Windows-only, feature-rich, older Microsoft server; often used with Kestrel as a reverse proxy for robust production setups. 
+
+
+ASP.NET Core uses Kestrel internally even when hosted on IIS.
+________________________________________
+How Kestrel Starts Automatically
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+app.Run();
+
+
+What is the difference between IEnumerable, ICollection, and IList? in c#
+In C#, these three interfaces form a hierarchy where each subsequent interface adds more functionality to the one before it
+
+1. IEnumerable
+•	Purpose: The most basic interface, used for simple iteration.
+•	Capabilities: It only supports moving forward through a collection using a foreach loop.
+•	Key Feature: Supports deferred execution (lazy evaluation), meaning the data is only retrieved when you actually iterate over it.
+•	When to Use: Use when you only need to read data and do not need to modify the collection or know its size upfront. 
+2. ICollection
+•	Purpose: Inherits from IEnumerable and adds basic management features.
+•	Capabilities: Adds the ability to Add, Remove, and Clear items, and provides a Count property to get the number of elements.
+•	When to Use: Use when you need to modify the collection (add/remove) or check its size, but do not require access by specific index positions. 
+3. IList
+•	Purpose: Inherits from ICollection and adds index-based access.
+•	Capabilities: Provides full control over the collection, including accessing elements by index (e.g., list[0]) and inserting/removing items at specific positions (InsertAt, RemoveAt).
+•	When to Use: Use when you need to access or modify elements at specific positions or need to maintain a strict order. 
+Summary Comparison Table
+Feature 	IEnumerable	ICollection	IList
+Iteration (foreach)	Yes	Yes	Yes
+Read/Write	Read-only	Read/Write	Read/Write
+Get Count	No (requires LINQ)	Yes (Count)	Yes (Count)
+Add/Remove	No	Yes	Yes
+Index-based access	No	No	Yes (list[i])
+Lazy Evaluation	Yes	No	No
+
+
+ASP.NET MVC
+
+https://www.c-sharpcorner.com/UploadFile/puranindia/ASP-NET-MVC-Interview-Questions/
+Action Filters are a feature of ASP.NET MVC / ASP.NET Core MVC that allow you to run custom logic before and/or after a controller action method executes, without putting that logic directly inside the action method.
+They help keep your code clean, reusable, and separated by concern.
+________________________________________
+Why Use Action Filters?
+Action Filters are commonly used for:
+•	Logging
+•	Authentication / Authorization
+•	Input validation
+•	Exception handling
+•	Performance monitoring
+•	Caching
+Instead of repeating the same code in every action, you apply a filter once.
+________________________________________
+How Action Filters Work (Execution Flow)
+When a request comes in:
+1.	Before Action Executes → OnActionExecuting
+2.	Action Method Executes
+3.	After Action Executes → OnActionExecuted
+________________________________________
+Types of Filters (Brief)
+•	Authorization Filters – Run first (security checks)
+•	Action Filters – Before & after action execution
+•	Result Filters – Before & after result execution
+•	Exception Filters – Handle unhandled exceptions
+This explanation focuses on Action Filters.
+________________________________________
+Creating a Custom Action Filter (ASP.NET MVC)
+Step 1: Create a Custom Action Filter
+using System;
+using System.Web.Mvc;
+
+public class LogActionFilter : ActionFilterAttribute
+{
+    // Runs BEFORE the action method
+    public override void OnActionExecuting(ActionExecutingContext filterContext)
+    {
+        Console.WriteLine("Action is about to execute");
+    }
+
+    // Runs AFTER the action method
+    public override void OnActionExecuted(ActionExecutedContext filterContext)
+    {
+        Console.WriteLine("Action has executed");
+    }
+}
+________________________________________
+Step 2: Apply the Filter to a Controller or Action
+Apply to a Controller
+[LogActionFilter]
+public class HomeController : Controller
+{
+    public ActionResult Index()
+    {
+        return View();
+    }
+}
+Apply to a Specific Action
+public class HomeController : Controller
+{
+    [LogActionFilter]
+    public ActionResult About()
+    {
+        return View();
+    }
+}
+________________________________________
+Example Execution Scenario
+When a user navigates to /Home/About:
+1.	OnActionExecuting runs
+→ Logs: "Action is about to execute"
+2.	About() action method runs
+3.	OnActionExecuted runs
+→ Logs: "Action has executed"
+________________________________________
+Real-World Example: Execution Time Measurement
+using System.Diagnostics;
+using System.Web.Mvc;
+
+public class ExecutionTimeFilter : ActionFilterAttribute
+{
+    Stopwatch stopwatch;
+
+    public override void OnActionExecuting(ActionExecutingContext filterContext)
+    {
+        stopwatch = Stopwatch.StartNew();
+    }
+
+    public override void OnActionExecuted(ActionExecutedContext filterContext)
+    {
+        stopwatch.Stop();
+        var timeTaken = stopwatch.ElapsedMilliseconds;
+        Debug.WriteLine($"Action took {timeTaken} ms");
+    }
+}
+Apply it like this:
+[ExecutionTimeFilter]
+public ActionResult Details()
+{
+    return View();
+}
+________________________________________
+Advantages of Action Filters
+✔ Clean and maintainable code
+✔ Reusable logic
+✔ Centralized cross-cutting concerns
+✔ Easy to apply at action, controller, or global level
+________________________________________
+Summary
+•	Action Filters allow code to run before and after an action method.
+•	They help separate cross-cutting concerns from business logic.
+•	Commonly used for logging, validation, and performance tracking.
+•	Implemented by inheriting from ActionFilterAttribute.
+
+Authorization Filters
+Authorization Filters are used to control who can access a controller or an action method.
+They run before action filters and before the action method executes, making them ideal for authentication and authorization checks.
+________________________________________
+Why Authorization Filters Are Important
+They help you:
+•	Restrict access to authenticated users
+•	Enforce role-based or policy-based security
+•	Prevent unauthorized requests early in the pipeline
+•	Centralize security logic
+________________________________________
+Execution Order (Simplified)
+1.	Authorization Filter ✅
+2.	Action Filter
+3.	Action Method
+4.	Result Filter
+If authorization fails, the request is short-circuited and the action is never executed.
+________________________________________
+Built-in Authorization Filter Example
+[Authorize] Attribute
+The most commonly used authorization filter.
+[Authorize]
+public class AdminController : Controller
+{
+    public ActionResult Dashboard()
+    {
+        return View();
+    }
+}
+Only authenticated users can access this controller.
+________________________________________
+Role-Based Authorization
+[Authorize(Roles = "Admin")]
+public ActionResult ManageUsers()
+{
+    return View();
+}
+Only users with the Admin role can access this action.
+________________________________________
+Allow Anonymous Access
+[AllowAnonymous]
+public ActionResult Login()
+{
+    return View();
+}
+Overrides authorization filters and allows public access.
+________________________________________
+Custom Authorization Filter Example
+Step 1: Create a Custom Authorization Filter
+using System.Web.Mvc;
+
+public class CustomAuthorizeFilter : AuthorizeAttribute
+{
+    protected override bool AuthorizeCore(HttpContextBase httpContext)
+    {
+        // Custom authorization logic
+        return httpContext.User.Identity.IsAuthenticated;
+    }
+
+    protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+    {
+        // Redirect unauthorized users
+        filterContext.Result = new RedirectResult("/Account/Login");
+    }
+}
+________________________________________
+Step 2: Apply the Filter
+[CustomAuthorizeFilter]
+public ActionResult SecurePage()
+{
+    return View();
+}
+________________________________________
+Example Scenario
+🔹 User requests /Admin/Dashboard
+🔹 Authorization filter checks if the user is authenticated
+🔹 If authorized → Action executes
+🔹 If not authorized → Redirects to Login page
+________________________________________
+Key Points to Remember
+•	Authorization filters execute before action filters
+•	Prevent unauthorized access before the action runs
+•	Can be applied at:
+o	Action level
+o	Controller level
+o	Global level
+•	Built-in filters like [Authorize] cover most use cases
+________________________________________
+Summary
+Authorization Filters:
+•	Handle authentication and authorization
+•	Protect controller actions from unauthorized access
+•	Improve application security and maintainability
+•	Are essential for role-based and policy-based security
+
+ASP.NET MVC, routing is the mechanism that maps an incoming URL to a controller, an action method, and optional parameters.
+A typical MVC route is divided into three important segments:
+ControllerName / ActionMethodName / Parameter
+________________________________________
+1️⃣ Controller Name
+•	Identifies which controller will handle the request
+•	MVC automatically looks for a class ending with Controller
+Example
+public class ProductController : Controller
+{
+    public ActionResult Details(int id)
+    {
+        return View();
+    }
+}
+URL Segment:
+/Product/Details/5
+✔ Product → ProductController
+________________________________________
+2️⃣ Action Method Name
+•	Identifies which method inside the controller will execute
+•	Must be a public method
+Example
+public ActionResult Details(int id)
+{
+    return View();
+}
+URL Segment:
+/Product/Details/5
+✔ Details → Action method name
+________________________________________
+3️⃣ Parameter
+•	Provides data to the action method
+•	Usually passed as part of the URL
+•	Can be optional or required
+Example
+public ActionResult Details(int id)
+{
+    ViewBag.ProductId = id;
+    return View();
+}
+URL Segment:
+/Product/Details/5
+✔ 5 → Parameter value passed to id
+________________________________________
+Complete Routing Example
+Default Route Configuration
+routes.MapRoute(
+    name: "Default",
+    url: "{controller}/{action}/{id}",
+    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+);
+________________________________________
+How the URL Is Processed
+For the URL:
+/Product/Details/5
+URL Segment	Maps To
+Product	ControllerName
+Details	ActionMethodName
+5	Parameter (id)
+________________________________________
+Another Example
+URL
+/Employee/Edit/10
+Code
+public class EmployeeController : Controller
+{
+    public ActionResult Edit(int id)
+    {
+        return View();
+    }
+}
+✔ Employee → EmployeeController
+✔ Edit → Edit action
+✔ 10 → Parameter id
+________________________________________
+Summary
+•	Routing breaks a URL into Controller / Action / Parameter
+•	Controller handles the request
+•	Action method contains the logic
+•	Parameters pass data to the action
+•	Default route pattern:
+•	{controller}/{action}/{id}
+This structure makes MVC URLs clean, readable, and user-friendly.
+
+
