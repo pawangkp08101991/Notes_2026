@@ -1,1 +1,69 @@
-Test
+Questions
+What is an Object?
+What is Encapsulation?
+What is Abstraction?
+Which are Access Specifiers?
+What is Inheritance?
+How can you implement multiple inheritance in C#?
+Are private class members inherited from the derived class?
+What is Polymorphism?
+What is method Overloading?
+When and why to use method Overloading?
+What is method Overriding?
+What is a Constructor?
+Describe some of the key points regarding the Constructor.
+What is a Private Constructor?
+Can you create an object of class with a private constructor in C#?
+What is the use of a private constructor in C#?
+What is the use of a static constructor in C#?
+What is Destructor?
+What are Namespaces?
+What are Virtual, Override, and New keywords in C#?
+What is the difference between Struct and Class in C#?
+What is Interface?
+Why to use Interfaces in C#?
+What is Implicit interface implementation?
+What is Explicit interface implementation?
+What is an Abstract class?
+Describe the Abstract class in detail.
+What is the difference between Abstraction and Encapsulation?
+Can Abstract class be Sealed in C#?
+Can abstract classes have Constructors in C#?
+Can you declare abstract methods as private in C#?
+Can abstract classes have static methods in C#?
+Does the Abstract class support multiple Inheritance?
+Abstract class must have only abstract methods. Is it true or false?
+When do you use Abstract Class?
+Why can Abstract class not be Instantiated?
+Which type of members can you define in an Abstract class?
+What is Operator Overloading?
+Is it possible to restrict object creation in C#?
+Can you inherit Enum in C#?
+Is it possible to achieve Method extension using an Interface?
+Is it possible that a Method can return multiple values at a time?
+What is Constant?
+What is read-only?
+What is Static?
+What is Static ReadOnly?
+Can “this” be used within a Static Method?
+What are Design Patterns in .Net?
+What are the Types of Design Patterns?
+What are the key Benefits of using Design Patterns?
+What is the difference between Static class and Singleton instance?
+Can you serialize Hashtable?
+Why is the Singleton pattern considered an Anti-pattern?
+What is Encapsulation and data hiding in C#?
+What is the use of the Yield keyword in C#?
+How to catch multiple exceptions at once in C#?
+What is the use of the IDisposable interface in C#?
+What is Property in C#.net?
+What are accessors?
+What is Partial Class?
+What is Sealed Class?
+What are Sealed Methods and Properties?
+How to call a base class constructor from the derived class in C#?
+What is a base keyword?
+What are the Benefits of Three Tier Architecture?
+What is the Difference between Design Patterns and Architectural Patterns?
+What is Constructor Chaining in C#?
+What is the difference between this and base in C#?
