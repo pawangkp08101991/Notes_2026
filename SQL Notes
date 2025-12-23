@@ -52,31 +52,50 @@ SQL
 49. How do you import/export data in SQL?  
 50. How would you clean messy data using SQL?
 
-SQL (Structured Query Language) is the standard language for managing relational databases, used to create, read, update, and delete (CRUD) data, define database structures (tables, schemas), and control data access, making it essential for websites, apps, and data analysis to efficiently store, retrieve, and manipulate large datasets. 
+SQL (Structured Query Language) is the standard language
+for managing relational databases, 
+used to create, read, update, and delete (CRUD) data,
+define database structures (tables, schemas),
+and control data access, making it essential for websites, apps,
+and data analysis to efficiently store, retrieve, 
+and manipulate large datasets. 
 What is SQL?
-•	A Language for Databases: SQL is a domain-specific programming language designed to communicate with databases, allowing users to issue commands.
-•	Relational Focus: It primarily works with relational databases (RDBMS), which organize data into tables with rows and columns, like spreadsheets.
-•	Standard & Versatile: It's an ANSI standard, supported by major database systems (MySQL, PostgreSQL, SQL Server, Oracle) and used across industries. 
+•	A Language for Databases: SQL is a domain-specific programming language designed 
+    to communicate with databases, allowing users to issue commands.
+•	Relational Focus: It primarily works with relational databases (RDBMS), 
+    which organize data into tables with rows and columns, like spreadsheets.
+•	Standard & Versatile: It's an ANSI standard, supported by major database 
+    systems (MySQL, PostgreSQL, SQL Server, Oracle) and used across industries. 
 Why is it used?
 •	Data Management (CRUD): Perform fundamental data operations:
 o	Create: INSERT new records, CREATE TABLE.
 o	Read (Query): SELECT specific data using WHERE clauses.
 o	Update: UPDATE existing records.
 o	Delete: DELETE records or tables.
-•	Data Retrieval & Analysis: Extract insights, filter, sort, and join data from different tables for reporting and analysis.
-•	Backend Operations: Powers data storage and processing for countless applications, from banking apps (Revolut) to social media (Instagram).
+•	Data Retrieval & Analysis: Extract insights, filter, sort, 
+    and join data from different tables for reporting and analysis.
+•	Backend Operations: Powers data storage and processing for countless applications,
+    from banking apps (Revolut) to social media (Instagram).
 •	Database Structuring: Define, modify, and maintain the structure (schema) of databases and tables.
 •	Security & Permissions: Control who can access or modify specific data.
 
-SQL is a standard language for managing relational databases, while MySQL is a specific, open-source relational database management system (RDBMS) that uses SQL as its primary query language. 
+SQL is a standard language for managing relational databases,
+while MySQL is a specific, open-source relational database management system 
+(RDBMS) that uses SQL as its primary query language. 
 Essentially, you use the SQL language to interact with a database system like MySQL. 
 Key Differences
 Parameter 	SQL (Structured Query Language)	MySQL
-Type	A programming language.	A Relational Database Management System (RDBMS), which is a software product.
-Function	Provides the commands (like SELECT, INSERT, UPDATE) to manage and query data.	Stores, manages, and organizes data in a structured manner using the SQL language.
-Updates	A standardized language that changes very little and rarely receives updates.	A software product that is frequently updated with new features and enhancements.
-Portability	The core syntax is standardized and works across many RDBMS platforms (Oracle, SQL Server, MySQL, etc.).	A specific system with its own implementation and unique features, although it is cross-platform compatible (Windows, Linux, macOS).
-Licensing	Not subject to licensing as it is a language standard.	Open-source and free to use, though commercial licenses with dedicated
+Type	A programming language.	A Relational Database Management System (RDBMS), 
+which is a software product.
+Function	Provides the commands (like SELECT, INSERT, UPDATE) to manage and query data.
+Stores, manages, and organizes data in a structured manner using the SQL language.
+Updates	A standardized language that changes very little and rarely receives updates.
+A software product that is frequently updated with new features and enhancements.
+Portability	The core syntax is standardized and works across many RDBMS platforms
+(Oracle, SQL Server, MySQL, etc.).	A specific system with its own implementation
+and unique features, although it is cross-platform compatible (Windows, Linux, macOS).
+Licensing	Not subject to licensing as it is a language standard.	
+Open-source and free to use, though commercial licenses with dedicated
 
 Primary Key
 A primary key is a column (or combination of columns) that uniquely identifies each row in a table.
@@ -93,7 +112,8 @@ CREATE TABLE Students (
 Here, student_id uniquely identifies each student.
 ________________________________________
 Foreign Key
-A foreign key is a column (or combination of columns) that references the primary key of another table. It creates a relationship between tables and enforces referential integrity.
+A foreign key is a column (or combination of columns) that references the primary key of another table.
+It creates a relationship between tables and enforces referential integrity.
 Key characteristics:
 •	Values must exist in the referenced table’s primary key (or be NULL, if allowed)
 •	Ensures valid relationships between tables
@@ -121,14 +141,21 @@ What this means:
 •	email must be unique for every employee
 
 
-The primary difference is that the WHERE clause filters individual rows before any grouping or aggregation occurs, while the HAVING clause filters groups of rows after they have been processed by a GROUP BY clause and aggregate functions. 
+The primary difference is that the WHERE clause filters individual rows before any grouping 
+or aggregation occurs, while the HAVING clause filters groups of rows after they have 
+been processed by a GROUP BY clause and aggregate functions. 
 Key Differences between WHERE and HAVING
 Criteria 	WHERE Clause	HAVING Clause
-Purpose	Filters individual records (rows) from a table.	Filters groups of records based on aggregate conditions.
-Aggregate Functions	Cannot contain conditions with aggregate functions (e.g., COUNT(), SUM(), AVG()).	Must be used for conditions involving aggregate functions.
-Usage without GROUP BY	Can be used without a GROUP BY clause.	Generally used with a GROUP BY clause (though some SQL versions allow it without, treating the entire table as one group).
+Purpose	Filters individual records (rows) from a table.	Filters groups of records 
+based on aggregate conditions.
+Aggregate Functions	Cannot contain conditions with aggregate functions (e.g., COUNT(), SUM(), AVG()).	
+Must be used for conditions involving aggregate functions.
+Usage without GROUP BY	Can be used without a GROUP BY clause.	
+Generally used with a GROUP BY clause (though some SQL versions allow it without, 
+treating the entire table as one group).
 Position	Appears before the GROUP BY clause in a query.	Appears after the GROUP BY clause.
-Speed	Generally faster as it reduces the number of rows before aggregation.	Slower as it filters the results after the data has been aggregated.
+Speed	Generally faster as it reduces the number of rows before aggregation.
+Slower as it filters the results after the data has been aggregated.
 Statements	Can be used with SELECT, UPDATE, and DELETE statements.	Can only be used with the SELECT statement.
 Example Scenarios
 •	Using WHERE: To find employees from a specific department (filtering individual rows based on a non-aggregated column).
@@ -147,7 +174,12 @@ FROM employees
 WHERE department = 'Sales' -- Filters rows before grouping
 GROUP BY department
 HAVING COUNT(employee_id) > 10; -- Filters the resulting group
-A JOIN in SQL combines rows from two or more tables based on a related column, creating a new, temporary table for querying, with common types including INNER (matching rows only), LEFT (all left + matching right), RIGHT (all right + matching left), FULL (all rows from both), CROSS (Cartesian product), and SELF (joining a table to itself). These allow you to retrieve related data efficiently, supporting database normalization by reducing redundancy.  
+A JOIN in SQL combines rows from two or more tables based on a related column, creating a new, 
+temporary table for querying, with common types including INNER (matching rows only),
+LEFT (all left + matching right), RIGHT (all right + matching left), FULL (all rows from both),
+CROSS (Cartesian product), and SELF (joining a table to itself). 
+These allow you to retrieve related data efficiently, 
+supporting database normalization by reducing redundancy.  
 Common Types of SQL Joins
 1.	INNER JOIN:
 •	Purpose: Returns only the rows that have matching values in both tables. 
