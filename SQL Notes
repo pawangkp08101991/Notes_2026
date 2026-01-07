@@ -1236,4 +1236,1256 @@ Summary
 •	{controller}/{action}/{id}
 This structure makes MVC URLs clean, readable, and user-friendly.
 
+What is SQL?
+Structured Query Language (SQL) is a programming language for accessing and manipulating Relational Database Management Systems (RDBMSs). SQL is widely used in popular RDBMSs such as SQL Server, Oracle, and MySQL. The smallest unit of execution in SQL is a query. A SQL query is used to select, update, and delete data.
+
+In RDBMSs, all the data is stored in tables, with each table consisting of rows and columns. The following is an example of a SQL query, CREATE DATABASE.
+
+Sql Server SQL 
+
+Here is an example of a SQL query and the result in an Oracle database.
+
+Oracle SQL
+
+Here we can see our database is created.
+
+Output1 
+
+Learn more here: What is SQL?
+
+2. What is RDBMS?
+RDBMS is referred to as Relation Database Management Systems (RDBMS). RDBMS possesses the following characteristics:
+
+Write-intensive operations- The RDBMS is frequently written to and is often used in transaction-oriented applications.
+Data in flux or historical data- The RDBMS is designed to handle frequently changing data. Alternatively, RDBMS can also store vast amounts of historical data, which can later be analyzed or "mined".
+Application-specific schema- The RDBMS is configured per application, and a unique schema exists to support each application.
+Complex data models- The relational nature of the RDBMS makes it suitable for handling sophisticated, complex data models that require many tables, foreign key values, complex join operations, and so on.
+Data integrity- The RDBMS features many components designed to ensure data integrity. This includes rollback operations, referential integrity, and transaction-oriented operations.
+Click on the following link to read further: Directory Services Vs RDBMS.
+
+3. How to create a database in SQL Server?
+A database is an organized file of data. It is a collection of schemas, tables, procedures, code functions, and other objects. Various query languages are used to access and manipulate data. In SQL Server, a table is an object that stores data in a tabular (columns and rows) form. 
+
+You can create a new database using the CREATE DATABASE SQL command. 
+
+Syntax. CREATE DATABASE DatabaseName
+
+Example. CREATE DATABASE Student
+
+database
+
+Or, you can create a database using the SQL Server Management Studio. Then, Right-click on Databases, select New Database and follow the wizard steps. 
+
+New Database
+
+4. What is the database engine in SQL Server?
+The SQL Server Database Engine, SQL Server Agent, and several other SQL Server components run as services. These services typically are started when the operating system starts. This depends on what is specified during setup; some services are not started by default. A service is a type of application (executable) that runs in the system background. Services usually provide core operating system features, such as Web serving, event logging, or file serving. Services can run without showing a user interface on the computer desktop.
+
+The SQL Server Database Engine, SQL Server Agent, and several other SQL Server components run as services. These services typically are started when the operating system starts. This depends on what is specified during setup; some services are not started by default.
+
+This article describes managing the various SQL Server services on your machine. Before you log in to an instance of SQL Server, you need to know how to start, stop, pause, resume, and restart an instance of SQL Server. After you are logged in, you can perform tasks such as administering the server or querying a database. Let's start now, select Start/All Programs/Microsoft SQL Server2005/Configuration Tools/SQL Server Configuration Manager. It should look like Figure 1.
+
+windows menu
+
+Click on the following link to read further:  How to Start and Stop Database Engine in SQL 2005
+
+5. What is PL/SQL?
+PL/SQL (Procedural Language for SQL) is a procedural language developed by Oracle to work with the Oracle database using procedures in SQL. PL/SQL program units are compiled by the Oracle Database server and stored inside the database. And at run-time, both PL/SQL and SQL run within the same server process, bringing optimal efficiency.
+
+PL/SQL automatically inherits the robustness, security, and portability of the Oracle Database. PL/SQL syntaxes include declarations for variables, constants, procedures, functions, conditions, and loops.  
+
+Control statements in PL/SQL
+Control statements are very important in PL/SQL.
+Control Statements are elements in a program that controls the flow of program execution.
+The syntax of control statements is similar to regular English and is very similar to the choices that we make every day.
+Branching statements are as follows:
+If statement
+If - THEN - ELSE
+Nested IF
+Branching with logical connectivity
+While
+For Loop
+Here is a more detailed article on PL/SQL: PL/SQL Control Statements in Oracle.
+
+6. What is the difference between SQL and PL/SQL?
+SQL is the standard query language for adding, accessing, and manipulating data in RDBMSs. With SQL, you have:
+
+Only simple IF / Else statements.
+Through SQL, you can interact with the database through ADO.NET
+In SQL, you can execute a line of code
+It can run only on windows PL/SQL: It is referred to as Procedure Language/Structure Query Language:
+In PL/SQL, you can execute a block of code, not a single line of code.
+Deep control statements
+It can run in UNIX, also.
+PL/SQL language includes object-oriented programming techniques such as encapsulation, function overloading, and information hiding (all but inheritance).
+Click on the following link to read further: SQL Vs PL/SQL.
+
+7. What is a Check in SQL?
+A Check Constraint is a rule that identifies valid values for columns of data. A Check Constraint helps to enforce Domain Integrity. If the condition in a Check Constraint is not satisfied,d prevents the value from entering the database.
+
+Syntax
+
+Create table tableName(Column1 dataType Check(expression), Column2, columnN)
+SQL
+Example
+
+create table emp(empId int check(empId >10),empName varchar(15))
+SQL
+Output
+
+query executed
+
+insert into emp values(8,'d')
+SQL
+Output
+
+result
+
+Dropping the Check Constraint
+
+First, we can determine the name of the constraint using the following command:
+
+exec sp_help emp
+SQL
+Output
+
+output12
+
+Click on the following link to read further: Check Constraint in SQL Server 2012
+
+8. What is a default in SQL?
+Constraints are rules that decide what data can be entered into the database tables. SQL server has six types of constraints,s and we will explore all these constraints here with suitable examples. The constraints that we are going to explore are listed below: 
+
+Primary Key Constraint
+Foreign Key Constraint
+Not Null Constraint
+Unique constraint
+Default Constraint
+Check Constraint
+The default constraint allows you to set a default value for the column. That means when a row is created for the first time, and there is no entry specified for the column that has a default constraint on it, then the default value is stored in the column. Note that this is not a Not Null constraint,t and do not confuse the default value constraint with disallowing the Null entries.
+
+The default value for the column is set only when the row is created for the first time,,e and the column value is ignored on the Insert. Modifying the column with a NULL value or even the Insert operation specifying the Null value for the column is allowed. Let us set the Default value of 1 for the Class. Here are the steps:
+
+Bring up the table designer
+Select the Class Row as you already did.
+At the bottom of the layout, you will see a Column properties as shown in the below picture. Set the default as shown below:
+For further information, click on the link: Table Constraints in SQL 2005
+
+9. What is a constraint in SQL?
+Constraints are the rules that decide what kind of data can enter into the database tables. SQL server has six types of constraints, and we will explore all these constraints here with suitable examples. The constraints that we are going to explore are listed below:
+
+Primary Key Constraint
+Foreign Key Constraint
+Not Null Constraint
+Unique constraint
+Default Constraint
+Check Constraint
+First, Create two tables
+
+To explain these constraints, we need two tables. Firstly, let us create these tables. Run the scripts shown below to create the tables. Copy and paste the code into the new Query Editor window, then execute it.
+
+CREATE TABLE Student(StudId smallint, StudName varchar(50), Class tinyint);
+CREATE TABLE TotalMarks(StudentId smallint, TotalMarks smallint);
+Go
+SQL
+Note that there are no constraints at present on these tables. We will add the constraints one by one.
+
+Primary Key Constraint 
+
+A table column with this constraint is called the key column for the table. This constraint helps the table to make sure that the value is not repeated and also that there are no null entries. We will mark the StudId column of the Student table as the primary key. Follow these steps: 
+
+Right-click the student table and click on the modify button
+From the displayed layout,t select the StudId row by clicking the Small Square-like button on the left side of the row.
+Click on the Set Primary Key toolbar button to set the StudId column as the primary key column.
+Now, this column does not allow null values and duplicate values. You can try inserting values to violate these conditions and see what happens. A table can have only one Primary key. Multiple columns can participate in the primary key column. Then the uniqueness is considered among all the participant columns by combining their values.
+
+Not Null Constraint
+
+This constraint is useful to stop storing the null entries in the specified columns. We will mark the student name column as the not null column. This allows us to always have some entries in the student name column of the student table without having NULL. Follow the steps below:
+
+As you did previously, bring up the table design view by clicking the modify context menu for the table.
+Remove the checkmark as shown in the picture below. This action will enable the Not Null constraint for the StudName column.
+NOT NULL CONSTRAINT
+
+The default constraint allows you to set a default value for the column. That means when a row is created for the first time, and there is no entry specified for the column that has a default constraint on it, then the default value is stored in the column. Note that this is not a Not Null constraint,t and do not confuse the default value constraint with disallowing the Null entries.
+
+The default value for the column is set only when the row is created for the first time,,e and the column value is ignored on the Insert. Modification to the column with a NULL value or even the Insert operation specifying the Null value for the column is allowed. Let us set the Default value of 1 for the Class. Here are the steps:
+
+Bring up the table designer
+Select the Class Row as you already did.
+At the bottom of the layout, you will see a Column properties as shown in the below picture. Set the default as shown below:
+Default value
+
+For further information, click on the following link: Table Constraints in SQL 2005
+
+10. How do I define constraints in SQL?
+Constraints are rules and restrictions applied to a column, or tablet unwanted data can't be inserted into tables. This ensures the accuracy and reliability of the data in the database. We can create constraints on single or multiple columns of any table. Constraints maintain the data integrity and accuracy in the table. Constraints can be classified into the following two types.
+
+Column Types Constraints
+
+Definitions of these types of constraints are given when the table is created. 
+
+Create Table My_Constraint
+(
+IID int NOT NULL,
+Salary int CHECK(Salary > 5000)
+)
+SQL
+Table Types Constraints
+
+Definitions of these types of constraints are given after the creation of the table using the Alter Command. 
+
+Alter Table My_Cosntraint
+SQL
+Add constraint Check_Constraint Check(Age>50)
+SQL
+SQL Server contains the following six types of constraints:
+
+Not Null Constraint
+Check Constraint
+Default Constraint
+Unique Constraint
+Primary Constraint
+Foreign Constraint
+Let us understand each constraint briefly.
+
+Not Null Constraint
+
+A Not Null constraint restricts the insertion of null values into a column. If we are using a Not Null Constraint for a column, we cannot ignore this column's value during the data insertion into the table.  
+
+Column Level
+
+Syntax
+
+CREATE TABLE Table_Name
+(
+Column_Name Datatype CONSTRAINT Constraint_Name NOT NULL,
+);
+SQL
+Example
+
+Create Table My_Constraint
+(
+IID int NOT NULL,
+Name nvarchar(50) CONSTRAINT Cons_NotNull not null,
+Age int Not Null,
+)
+SQL
+Table Level
+
+Syntax
+
+ALTER TABLE Table_Name
+ALTER COLUMN Column_Name Datatype NOT NULL
+SQL
+Example
+
+Alter Table My_Constraint
+Alter Column IId int Not Null
+SQL
+Without SQL Command 
+
+We can also create a Not Null constraint in Microsoft SQL Server without the execution of a SQL query.
+
+First, right-click on the table and select and click on the design option. Now check all the columns in the “Allow Nulls” option that should have a Null Value.
+
+set null from designer 
+
+A Check constraint checks for a specific condition before inserting data into a table. If the data passes all the Check constraints, then the data will be inserted into the table. Otherwise,e the data for insertion will be discarded. The CHECK constraint ensures that all values in a column satisfy certain conditions.
+
+For further information, click on the link: Constraints in SQL Server.
+
+11. What is the meaning of Not Null in SQL?
+Constraints are rules that decide what kind of data can enter into the database tables. SQL server has six types of constraints, and we will explore all these constraints here with suitable examples. The constraints that we are going to explore are listed below: 
+
+Primary Key Constraint
+Foreign Key Constraint
+Not Null Constraint
+Unique constraint
+Default Constraint
+Check Constraint
+This constraint is useful to stop storing the null entries in the specified columns. We will mark the student name column as the not null column. This allows us to always have some entries in the student name column of the student table without having NULL. Here are the steps:
+
+Like you did previously, bring up the table design view by clicking the modify context menu for the table.
+Remove the checkmark as shown in the picture below. This action will enable the Not Null constraint for the StudName column.
+Example
+
+sett null from designer
+
+Click on the following link to read further: Table Constraints in SQL 2005
+
+12. What is a database table?
+Database table: The table contains records in the form of rows and columns. A permanent table is created in the database you specify and remains in the database permanently until you delete it.
+
+Syntax
+
+Create table TableName (ID INT, NAME VARCHAR(30) )
+Drop syntax: drop table TableName
+Select Syntax: Select * from TableName
+SQL
+Click on the following link to read more on temporary tables in SQL.
+
+13. How do you create a table in SQL?
+SQL provides an organized way for table creation.
+
+Syntax
+
+Create table TableName (columnName1 datatype, columnName2 datatype )
+SQL
+The following is an example of creating a simple table.
+
+create table Info
+(
+   Name varchar(20),
+   BirthDate date,
+   Phone nvarchar(12),
+   City varchar(20)
+)
+SQL
+table in SQL
+
+Click on the following link to read further: SQL Server Database Basics Query Command.
+
+14. How to delete a table in SQL Server?
+Delete the data record from the database table and delete an existing table with the following method:
+
+Syntax. To delete all table records of a table:
+
+Delete TableName
+DELETE info
+SQL
+delete a table
+
+Click on the following link to read further: SQL Server Database Basics Query Command
+
+15. How to update a SQL Server database table using SQL?
+To update an existing Tabl,e we use SQL Command UPDATE: It will update the records as per the user-defined query/need.
+
+Syntax
+
+Update TableName SET ColumnName = NewData where Condition
+Update info Set City = 'Baroda' where id = 2
+SQL
+update a database
+
+Click on the following link to read further: SQL Server Database Basics Query Command.
+
+16. What are the relationships in the SQL Server database?
+Relationships are created by linking the column in one table with the column in another table. There are four different types of relationships that can be created. The relationships are listed below:
+
+One-to-One Relationship
+Many-to-One Relationship
+Many-to-Many Relationship
+One-to-Many & Many-to-One Relationship
+For a One-to-Many relationship, a single column value in one table has one or more dependent column values in another table. Look at the following diagram:
+
+one to many
+
+Many to Many Relationship
+The third table acts as a bridge between the tables that want to establish a Many-to-Many relationship. The bridge table stores the shared information between Many-to-Many relationship tables. Have a look at the following diagram:
+
+Many to Many
+
+Click on the following link to read further: Database Table Relationship
+
+17. What is the primary key of a database?
+A table column with this constraint is called the key column for the table. This constraint helps the table to make sure that the value is not repeated and also that there are no null entries.
+
+primary key
+
+Now, this column does not allow null values and duplicate values. You can try inserting values to violate these conditions and see what happens. A table can have only one Primary key. Multiple columns can participate in the primary key.
+
+Example
+
+Example
+
+Click on the following link to read further: Table Constraints in SQL 2005
+
+18. What is a foreign key of a database?
+To define the relationship between two tables (one is called the parent and the other one is the child table) connected by columns, a foreign key constraint is used. In this constraint, the values of the child table must appear in the parent table, which means that for a foreign key, one table should point to a Primary Key in another table. A table can have multiple foreign keys,s and each foreign key can have a different referenced table.
+
+Example. To understand the foreign key clearly, let's assume the following two tables:
+
+CUSTOMER {Cust_ID, Cust_Name, Age, ContactNo, Gender, Address}
+VENDOR {Vend_ID, Vend_Name, Cust_ID}
+SQL
+CUSTOMER
+
+vendor
+
+Example
+
+Foreign Key Constraint while using the CREATE TABLE statement.
+
+Syntax
+
+CREATE TABLE table_name
+(
+   Col1 datatype NOT NULL,
+   Col2 datatype NOT NULL,
+   Col3 datatype NOT NULL,
+   CONSTRAINT FK_Column FOREIGN KEY(Col1, Col2, Col3) REFERENCES parent_table(Col1, Col2, Col3)
+);
+SQL
+AT SINGLE-COLUMN LEVEL
+
+Method 1- With In-Line Specification/Column Level,
+
+Click on the following link to read further: Constraints in Oracle: Part 2
+
+19. What is database normalization?
+Database normalization is the process of organizing the fields and tables of a relational database to minimize redundancy and dependency. Normalization usually involves dividing large tables into smaller (and less redundant) tables and defining relationships among them. Normalization is a bottom-up technique for database design. The evolution of Normalization theories is illustrated below:
+
+evolution of Normalization
+
+First Normal Form (1NF)
+Second Normal Form (2NF)
+Third Normal Form (3NF)
+Boyce-Codd Normal Form (BCNF)
+4th Normal Form
+5th Normal Form
+6th Normal Form
+Click on the following link to read further: Database Normalization.
+
+20. What are database normalization forms?
+Normalization is the process of organizing data into a related table. It also eliminates redundancy and increases integrity which improves the performance of the query. To normalize a database, we divide the database into tables and establish relationships between the tables. 
+
+database normalization
+
+ 
+
+First Normal Form (1st NF)
+Second Normal Form (2nd NF)
+Third Normal Form (3rd NF)
+Boyce-Codd Normal Form (BCNF)
+Fourth Normal Form (4th NF)
+Fifth Normal Form (5th NF)
+Click on the following link to read further: Normalization and its Types.
+
+21. What is an index in SQL Server?
+An Index is one of the most powerful techniques to work with this enormous amount of information. However, database tables are not enough for getting the data efficiently in case of a huge amount of data. We need to index the column in a table to get the data quickly. An index is a database object created and maintained by the DBMS. Indexed columns are ordered or sorted so that data searching is extremely fast. An index can be applied to a column or a view. A table can have more than one index.
+
+Microsoft SQL Server has two types of indexes. 
+
+Clustered Index in SQL Server
+A Clustered Index sorts and stores the data in the table based on keys. A Clustered Index can be defined only once per table in the SQL Server Database because the data rows can be sorted in only one order. Text, nText, and Image data are not allowed as a Clustered index.
+
+SET STATISTICS IO ON
+SELECT * FROM Employee WHERE EmpID = 20001
+SQL
+EmpID         EmpName                 Cell                    Dept
+
+20001         Black Smith       12345678901             1
+
+Clustered Index 
+
+Non-Clustered Index in SQL Server
+Non-Clustered Indexes, or simply indexes, are created outside of the table. SQL Server supports 999 Non-Clustered per table, and each Non-Clustered can have up to 1023 columns. A Non-Clustered Index does not support the Text, nText, and Image data types.
+
+CREATE NONCLUSTERED INDEX NCL_ID ON Employee(DeptID)
+SET STATISTICS IO ON
+
+SELECT * FROM Employee WHERE DeptID = 20001
+SQL
+EmpID             EmpName                    Cell                       Dept
+
+ 40001              Black Smith           12345678901          20001
+
+Non Clustered Index
+
+Click on the following link to read further: SQL Server Index
+
+22. Why do I need an index in a database?
+An Index is a database object that can be created on one or more columns (16 max column combinations). When creating the index, it will read the column(s) and forms a relevant data structure to minimize the number of data comparisons. The index will improve the performance of data retrieval and add some overhead to the data modification, such as creating, deleting, and modifying. So it depends on how much data retrieval can be done on the table versus how many DML (Insert, Delete, and Update) operations. Need of Index in Database. An index is used for fast data retrieval from the database.
+
+Syntax
+
+CREATE INDEX index_name ON table_name;
+or
+DROP INDEX index_name;
+SQL
+Type of Index
+
+In a SQL Server database, there are mainly the following two types of indexes:
+
+Clustered index and
+Non Clustered index
+Click on the following link to read further:  Index in SQL SERVER.
+
+23. How to alter a table schema in SQL Server?
+Altering Tables: It is used to modify an existing table.
+
+CREATE TABLE Stock
+(
+ID SMALLINT
+);
+mysql > ALTER TABLE Stock - > ADD COLUMN Quantity SMALLINT UNSIGNED NOT NULL, - > MODIFY ID SMALLINT UNSIGNED NOT NULL, - > ADD PRIMARY KEY(ID);
+mysql > Describe Stock;
+mysql > ALTER TABLE Stock;
+SQL
+Example in SQL
+
+Example in Sql
+
+Click on the following link to read further: DROP in MySQL.
+
+24. What is a query in a database?
+SQL is a complete data manipulation language used not only for database queries but also to modify and update data in the database. Compared to the complexity of the SELECT statement, which supports SQL queries, the SQL statements that modify and create database contents are somewhat simple.
+
+However, database updates pose challenges for a DBMS beyond those presented by database queries. The DBMS must protect the integrity of the stored data during changes, ensuring that only valid data is introduced into the database.
+
+The DBMS must also coordinate simultaneous updates by multiple users, ensuring that the users and their changes do not interfere with one another. For example, the INSERT statement adds new rows of data to a table.
+
+Syntax
+
+Insert into table_Name(column names) values(Values for column).
+INSERT INTO employee(ID, SURNAME, FIRSTNAME, EMAIL, COUNTRY, PHONE)
+VALUES(111, 'vithal', 'wadje', 'vithal.wadje@yahoo.com', 'India', '+914545455454')
+SQL
+Click on the following link to read more: Introduction to Insert Statement in SQL Server.
+
+25. What are query types in a database?
+Types of Commands in SQL ServerThese commands are categorized into: 
+
+DDL
+DCL
+DML
+TCL
+Let's see these categories one by one.
+
+DDL Command in SQL
+Data Definition Language (DDL) commands are responsible for dealing with the structure of objects. I mean that with these commands, we can modify our object/entity structure. For example, if there's one table and you want to modify the design of that table, you can use DDL commands. The following are the commands in this category:
+
+Command	Description
+Create	Used to create objects.
+Alter	Used to modify created objects.
+Drop	Used to delete things.
+Using these commands, you can create objects like tables, views, databases, triggers, etc.
+
+Example
+
+CREATE DATABASE DB2
+GO
+CREATE TABLE tblDemo
+(
+Id int primary key,
+Name char(20)
+)
+GO
+DROP DATABASE DB2
+SQL
+DML Command in SQL
+Data Manipulation Language (DML) commands manipulate data stored in objects like tables, views, etc. With the help of these commands, you can easily modify, insert and delete your data. The following are the commands in this category:
+
+Command	Description
+Insert	Insert data into the table.
+Delete	Delete data from the table.
+Update	Update data in the table.
+Insert Into	Insert bulk data into the table.
+Using these commands, you can manipulate any kind of data stored in entities.
+
+Example
+
+INSERT INTO tblDemo VALUES(1, 'Abhishek')
+GO
+DELETE FROM tblDemo WHERE Id = 4
+GO
+UPDATE tblDemo
+SET Name = 'Sunny'
+WHERE Id = 6
+GO
+SQL
+DCL Command in SQL
+Data Control Language (DCL) commands are for security purposes. These commands are used to provide roles, permissions, access, and so on. Below are the commands in this category:
+
+Command	Description
+Grant	Provide user access to the database or any other object.
+Revoke	Take back the access from the user.
+For example, we have the following data.
+
+Database- CSharpCornerDB
+
+Table: User- CSharpCorner Currently, we didn't provide any permission to this user.
+
+permit
+
+Now we'll create a table in the CSharpCornerDB database.
+
+CREATE table tblArticles
+(
+ArticleId int primary key identity,
+ArticleName varchar(10),
+Category varchar(10)
+)
+SQL
+If we execute this command, we'll get an error message.
+
+Msg 262, Level 14, State 1, Line 1
+
+CREATE TABLE permission denied in database 'CSharpCornerDB'. This is because this user doesn't have permission to create anything right now.
+
+TCL Command in SQL
+Transaction Control Language (TCL) commands you to manage transactions in SQL Server. The following are the commands in this category:
+
+Command	Description
+Commit	Used to save any transaction permanently.
+Rollback	This command Is used to restore the database to its last committed state.
+Save Tran	This command is used to save the transaction so that we can roll back that transaction to the point whenever necessary.
+For example, we have a table named "tblStudent" with 3 records, as shown below:
+
+tblStudent
+
+Now, we'll begin our transaction, add another record, and commit that transaction.
+
+Begin Tran
+Insert INTO tblStudents VALUES('Sumit')
+COMMIT
+SQL
+Now we have 4 Records.
+
+4 Records
+
+Now, we'll add three records, one by one, with a save point, but we don't commit our transaction.
+
+Begin Tran
+Insert INTO tblStudents VALUES('Kajal')
+SAVE Tran A;
+Insert INTO tblStudents VALUES('Rahul')
+SAVE Tran B;
+Insert INTO tblStudents VALUES('Ram')
+SAVE Tran C;
+
+SELECT * from tblStudents
+SQL
+Next, we have the following records in the table, from which the last three records are not yet committed.
+
+
+
+Next, we have 3 savepoints, in other words, A, B, and C. Since our transaction is not yet committed, we can roll it back to any savepoint. We'll roll it back to point B.In other words, "Rahul".
+
+ROLLBACK TRAN B
+COMMIT Now when you fire the select query, you'll get records up to ID 6.
+SQL
+commited records2
+
+To learn more, please visit Types of Commands in SQL Server.
+
+26. How do you select data from an SQL Server table?
+To select specific rows or all columns, select distinct rows, filter with where clause, sort rows using orderby, and so on, we will be using the AdventureWorks2012 database.
+
+To select all the rows and columns from a table, we use the following query:
+
+SELECT * FROM HumanResources.Employee
+SQL
+Execute the query by pressing F5 or via the execute button.
+
+Output
+
+output9
+
+There is another way to select all the columns from a table. Instead of using *, we can specify the column names.
+
+SELECT BusinessEntityID, NationalIDNumber, LoginID, OrganizationNode,
+OrganizationLevel, JobTitle, BirthDate, MaritalStatus, Gender, HireDate,
+SalariedFlag, VacationHours, SickLeaveHours, CurrentFlag, rowguid, ModifiedDate
+FROM HumanResources.Employee
+SQL
+The output will be the same.
+
+If you feel lazy in writing this long query given above, then what you can do is go to the Object Explorer window, then expand adventureWorks2012.
+
+After that, select the HumanResourcesEmployee table and right-click on it.
+
+Next, "select script table as" and select "To", then you will see a New query editor window.
+
+ 
+
+New query editor
+
+SQL Server will generate the SELECT query for us.
+
+New query editor1
+
+Click on the following link to read further:  SELECT Statement in SQL Server.
+
+27. What is a join in SQL Server?
+To retrieve data from multiple tables, in SQL Server, we use joins. Joins are used to get data from two or more tables based on the relationships among some of the columns in the tables.
+
+Syntax
+
+The Inner join syntax is as follows:
+
+SELECT < column list >
+FROM < left joined table > [INNER] JOIN < right joined table >
+ON < join condition >
+SQL
+The example is developed in SQL Server 2012 using the SQL Server Management Studio.
+
+Creating Table in SQL Server
+
+Now create 3 tables in the Master database named Table1, Table2, and Table3.
+
+Table1
+
+CREATE TABLE Table1
+(
+ID INT, Name VARCHAR(20)
+)
+SQL
+Table2
+
+CREATE TABLE Table2
+(
+ID INT, Name VARCHAR(30)
+)
+SQL
+Table3
+
+CREATE TABLE Table3
+(
+ID INT, Name VARCHAR(40)
+)
+SQL
+Click on the following link to read further: Joining Three or More Tables in SQL Server 2012
+
+28. What are the different types of joins in SQL Server?
+Joins help bring data together from different tables based on their database relations. First, we will see how the join operates between tables. Then, we will explore the Order of Execution when both a join and condition exist. Finally, we will explore the importance of the Join order. A Join condition defines the way two tables are related in a query by: 
+
+They specify the column to be used for the Join from each table. In joining foreign keys in a table and their associated key in the other table.
+To use the logical operator in comparing values from the columns.
+There are three types of joins available based on the way we join columns of two different tables.
+
+Full Join
+Inner Join
+Left outer Join
+Right outer Join
+Full Join in SQL Server
+A full join is somewhat different from the Cartesian product. A Cartesian product will get all the possible row combinations of the two joining tables. A Full Join takes the matching columns plus all table rows from the left table that does not match the right and all table rows in the request that does not match the left. It applies null for unmatched rows on the other end when doing so. The following example shows the full join between Table_A and Table_C.
+
+Table_A
+
+Table_C
+
+Click on the following link to read further: Table Join in SQL
+
+29: What is an inner join in SQL?
+Inner or Self Join: This Join returns a row when there is at least one match in both tables.
+
+Example
+
+inner or self
+
+Select * From Table1
+Inner Join Table2
+on table1.ID = table2.ID
+SQL
+The following query displays the Employee Name and the corresponding Manager Name within the employee table.
+
+SELECT e1.Employee_Name EmployeeName, e2.Employee_Name ManagerName
+FROM employee e1(nolock), employee e2(nolock)
+WHERE e1.EmployeeID = e2.ManagerID
+SQL
+Output
+
+Output5
+
+An inner join (sometimes called a "simple join") is a join of two or more tables that returns only those rows that satisfy the join condition.
+
+Click on the following link to read further: Explain SQL Joins.
+
+30. What is an outer join in SQL?
+There are three different types of outer joins; let's see each one by one. 
+
+Left Outer Join
+Right Outer Join
+Full Outer Join
+Left Outer Join
+
+A LEFT OUTER JOIN is one of the JOIN operations that allows you to specify a join clause. It preserves the unmatched rows from the first (left) table, joining them with a NULL row in the shape of the second (right) table.
+
+left outer join
+
+Select * From Table1
+Left Outer Join
+on table1.ID = table2.ID
+SQL
+Right Outer Join
+
+A RIGHT OUTER JOIN is one of the JOIN operations that allows you to specify a JOIN clause. It preserves the unmatched rows from the Table2 (right) table, joining them with a NULL in the shape of the Table1 (left) table. A LEFT OUTER JOIN B is equivalent to B RIGHT OUTER JOIN A, with the columns in a different order.
+
+right outer join
+
+Select * From Table1
+Right Outer Join
+on table1.ID = table2.ID
+SQL
+Click on the following link to read further: Introduction to Joins in SQL Server.
+
+31. What is a full join in SQL?
+A Full Outer Join fetches all records of both tables. Where the record does not match, it returns Null.
+
+select e.empId, e.empName, e1.empAdd from emp e full outer join emp_add e1 on e.empId = e1.empId
+SQL
+Output
+
+output6
+
+Full Outer Join 
+
+This JOIN is a combination of both. All records from both Left_Table and Right_Table are in the result set and matched when they can be on the Join_Condition; when no record is found in the opposite table, NULL values are used for the columns.
+
+full outer join
+
+Select * From Table1
+Full Outer Join
+on table1.ID = table2.ID
+SQL
+Click on the following link to read further: Joins in SQL Server 2012 
+
+32. What is a left join in SQL Server?
+Left Join: A LEFT OUTER JOIN is one of the JOIN operations that allows you to specify a join clause. 
+
+It preserves the unmatched rows from the first (left) table, joining them with a NULL row in the shape of the second (right) table.
+
+left join
+
+Select * From Table1
+Left Outer Join
+on table1.ID=table2.ID
+SQL
+A left outer join displays all the rows from the first table and the matched rows from the second table.
+
+Example
+
+The following query retrieves the employee's name and the corresponding department he belongs to, whereas all the departments are displayed even if the employee is not assigned to any department.
+
+SELECT e.EmployeeID, e.Employee_Name, d.Department_Name
+FROM employee e(nolock) LEFT JOIN department d(nolock)
+ON e.DepartmentID = d.DepartmentID
+SQL
+Output
+
+output7
+
+Click on the following link to read further: Explain SQL Joins.
+
+33. What is the right join in SQL Server?
+A RIGHT OUTER JOIN is one of the JOIN operations that allows you to specify a JOIN clause. It preserves the unmatched rows from the Table2 (right) table, joining them with a NULL in the shape of the Table1 (left) table. A LEFT OUTER JOIN B is equivalent to B RIGHT OUTER JOIN A, with the columns in a different order.
+
+right join
+
+Select * From Table1
+Right Outer Join
+on table1.ID = table2.ID
+SQL
+The right outer join displays all the rows from the second table and matching rows from the first table.
+
+Example
+
+SELECT e.EmployeeID, e.Employee_Name, d.Department_Name
+FROM employee e(nolock) RIGHT JOIN department d(nolock)
+ON e.DepartmentID = d.DepartmentID
+SQL
+Output
+
+output8
+
+Click on the following link to read further:  Explain SQL Joins.
+
+34. What is a view in the database?
+A view in SQL Server is a snapshot of data generated using a SELECT query from one or more tables. Views have several advantages: 
+
+A view can combine data from multiple tables using adequate joins. While bringing data may require complex filters and calculated data to form the required result set. From a user's point of view, they can now use a single source of data for their applications. 
+Sometimes, for security purposes, the database user does not give access to the table, table structures, and table relationships. All they have is access to a view, not knowing what tables exist in the database.
+Using the view, you can restrict the user to update only portions of the records.                                                                                 
+view
+
+The following are the key points to be noted about views:
+
+Multiple views can be created on one table.
+Views can be defined as read-only or updatable.
+Views can be indexed for better performance.
+Finally, insert, update, and delete can be done on an updatable view.
+Click on the following link to read further: Creating and Using SQL Server View.
+
+35. What do I need views in a database?
+There are a number of scenarios where we have to look for a view as solution.
+
+To hide the complexity of the underlying database schema or customize the data and schema for a set of users.
+To control access to rows and columns of data.
+To aggregate data for performance.
+Views are used for security purposes because they provide encapsulation of the name of the table. Data is in the virtual table, not stored permanently. Views display only selected data.
+
+Syntax of a View
+
+CREATE VIEW view_name AS
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+SQL
+Syntax of a View
+
+There are two types of views.
+
+Simple View
+Complex View
+Click on the following link to read further: Concept of View in SQL Server.
+
+36. What is a stored procedure?
+A Stored Procedure is a collection or a group of T-SQL statements. Stored Procedures are a precompiled set of one or more statements that are stored together in the database. They reduce the network load because of the precompilation. We can create a Stored Procedure using the "Create proc" statement.
+
+Why do we use a Stored Procedure?
+There are several reasons to use a Stored Procedure. They are a network load reducer and decrease execution time because they are precompiled. The most important use of a Stored Procedure is for security purposes. They can restrict SQL Injection. We can avoid SQL injection by use of a Stored Procedure.
+
+How to create a Stored Procedure?
+CREATE PROCEDURE spEmployee
+AS
+BEGIN
+
+SELECT EmployeeId, Name, Gender, DepartmentName
+FROM tblEmployees
+INNER JOIN tblDepartments
+ON tblEmployees.EmployeeDepartmentId = tblDepartments.DepartmentId
+END
+SQL
+Stored Procedure
+
+Advantages of using a Stored Procedure in SQL Server
+It is very easy to maintain a Stored Procedure, and they are reusable.
+The Stored Procedure retains the state of the execution plans.
+Stored Procedures can be encrypted, and that also prevents SQL Injection attacks.
+Click on the following link to read further: Stored Procedures in SQL Server.
+
+37. What is a function in SQL Server?
+A function is a sequence of statements that accepts input, processes them to perform a specific task, and provides the output. Functions must have a name, but the function name can never start with a special character such as @, $, #, and so on.
+
+Types of function
+
+Pre-Defined Function
+User-Defined Function
+User-defined Function
+
+In a user-defined function, we write our logic according to our needs. The main advantage of a user-defined function is that we are not just limited to pre-defined functions. We can write our functions or simplify complex SQL code for specific needs for our particular needs. The return type of a SQL function is either a scalar value or a table.
+
+Creation of a function
+
+Create function ss(@id int)
+returns table
+as
+return select * from item where itemId = @id
+SQL
+Execution of a Function
+
+select * from ss(1)
+SQL
+Output
+Output2
+Click on the following link to read further: Function in SQL Server 2012 
+
+38. What are the different types of functions in SQL Server?
+A function must return a result. So that is also called a function that returns a result of a value. When we create it, a function must specify a value type that will return a value.
+
+Functions only work with select statements.
+Functions can be used anywhere in SQL, such as AVG, COUNT, SUM, MIN, DATE, and so on, with select statements.
+Functions compile every time.
+Functions must return a value or result.
+Functions only work with input parameters.
+Try-and-catch statements are not used in functions.
+Function Types
+
+The following is the function list in SQL Server databases.
+
+Function Types
+
+SQL Server contains the following aggregates functions:
+
+aggregates functions
+
+Click on the following link to read further: Functions in SQL Server Databases
+
+39. What is a trigger in SQL Server?
+A Trigger is a Database object just like a stored procedure, or we can say it is a special kind of Stored Procedure that fires when an event occurs in a database. It is a database object bound to a table executed automatically. We cannot explicitly call any trigger. Triggers provide data integrity and are used to access and check data before and after modification using DDL or DML queries.
+
+Type of Triggers- There are two types of Triggers:
+
+DDL Trigger
+DML trigger
+DDL Triggers
+
+These triggers fire in response to DDL (Data Definition Language) command events that start with Create, Alter, and Drop, like Create_table, Create_view, drop_table, Drop_view, and Alter_table.
+
+Code of DDL Triggers
+
+create trigger saftey
+on database
+for
+create_table, alter_table, drop_table
+as
+print 'you can not create ,drop and alter table in this database'
+rollback;
+SQL
+Output
+
+output3
+
+DML Triggers
+
+These fire in response to DML (Data Manipulation Language) command events that start with Insert, Update, and Delete, like insert_table, Update_view, and Delete_table.
+
+Code of DML Trigger
+
+create trigger deep
+on emp
+for
+insert, update, delete
+as
+print 'you can notinsert,update and delete this table i'
+rollback;
+SQL
+Output
+
+When we insert, update, or delete a table in a database, then the following message appears:
+
+output4
+
+Click on the following link to read further: Triggers in SQL Server 
+
+40. Why and when to use triggers?
+We use a trigger when we want some event to happen automatically in certain desirable scenarios. You have a table that changes frequently. Now you want to know how many times and when these changes occur. In that case, you can create a trigger that will insert the desired data into another table whenever any change in the main table occurs. In SQL Server, we can create the following 3 types of triggers.
+
+Data Definition Language (DDL) triggers
+Data Manipulation Language (DML) triggers
+Log   on triggers
+Example
+
+CREATE TRIGGER trgAfterInsert ON[dbo].[Employee_Test]
+FOR INSERT
+AS
+declare@ empid int;
+declare@ empname varchar(100);
+declare@ empsal decimal(10, 2);
+declare@ audit_action varchar(100);
+select@ empid = i.Emp_ID from inserted i;
+select@ empname = i.Emp_Name from inserted i;
+select@ empsal = i.Emp_Sal from inserted i;
+set@ audit_action = 'Inserted Record -- After Insert Trigger.';
+
+insert into Employee_Test_Audit
+(Emp_ID, Emp_Name, Emp_Sal, Audit_Action, Audit_Timestamp)
+values(@empid, @empname, @empsal, @audit_action, getdate());
+
+PRINT 'AFTER INSERT trigger fired.'
+GO
+SQL
+Click on the following link to read further: Triggers in SQL Server.
+
+41. What are the different types of triggers?
+Triggers are a special type of stored procedure executed automatically based on the occurrence of a database event. These events can be categorized as follows: 
+
+Data Manipulation Language (DML) and
+Data Definition Language (DDL) events.
+The benefits derived from triggers are based on their event-driven nature. Once created, the trigger automatically fires without user intervention based on an event in the database.
+
+Using DML Triggers- DML triggers are invoked when any DML command such as INSERT, DELETE, and UPDATE occurs in a table and vi data new data.
+
+DML triggers are powerful objects for maintaining database integrity and consistency.
+
+DML triggers evaluate data before it has been committed to the database.
+
+During this evaluation, the following actions are performed.
+
+We cannot use the following commands in the DML trigger.
+
+ALTER DATABASE
+
+CREATE DATABASE
+
+DISK DATABASE
+
+LOAD DATABASE
+
+RESTORE DATABASE 
+
+Using DDL Triggers
+
+These triggers focus on changes to the definition of database objects instead of changes to the actual data.
+
+This type of trigger helps control development and production database environments.
+
+Let us create a DDL trigger now.
+
+Syntax
+
+CREATE TRIGGER trigger_name
+ON
+{
+   ALL SERVER | DATABASE
+}
+[WITH < ddl_trigger_option > [, ...n]]
+{
+   FOR | AFTER
+}
+{
+   event_type | event_group
+   }[, ...n]
+AS
+{
+   sql_statement[;][...n] | EXTERNAL NAME < method specifier > [;]
+}
+CREATE TRIGGER tr_TableAudit
+ON DATABASE
+FOR CREATE_TABLE, ALTER_TABLE, DROP_TABLE
+AS
+PRINT 'You must disable the TableAudit trigger in order
+to change any table in this database '
+ROLLBACK
+GO
+SQL
+Click on the following link to read further: Creating and managing Triggers in SQL Server 2005/2008
+
+42. What are the reporting services in SQL Server?
+SQL Server Reporting Services is a comprehensive reporting platform that includes processing components. Processing components are the basis for the multilayered architecture of SQL Server Reporting Services. Processing components interact with each other to retrieve data and deliver a report. SQL Server Reporting Services has the following two basic components.
+
+Processors
+Extensions
+The architecture of SQL Server Reporting Services
+The following diagram shows the architecture of SQL Server Reporting Services.
+
+Tools and Components of SQL Server Reporting Services architecture
+
+This architecture consists mainly of the following types of components and tools.
+
+Report Builder
+Report Designer
+Report Manager
+Report Server
+Report server database
+Data sources
+Click on the following link to read further: Architecture of SQL Server Reporting Services (SSRS)
+
+43. What is Analysis Services in SQL Server?
+The purpose of analysis services is to turn data into information and provide quick and easy access to that information for decision-makers. SSAS provides OLAP by letting you design, create and manage multidimensional structures that contain data aggregated from other data sources, such as relational databases. It also provides many data mining algorithms for mining data from data sources. For delivering OLAP and data mining, it uses client and server technologies. The main idea of SSAS is to provide fast results from data sources when we apply a query because, to make a decision, we need data of various dimensions.
+
+We will look at the components of the Architecture in detail.
+
+Server Architecture
+
+This runs as a Windows service. The Msmdsrv.exe application is a server component. This application consists of security, XMLA listener, query processor, and other components that perform the following tasks:
+
+Server Architecture
+
+Client Architecture
+
+SSAS has a thin client Component Architecture. All queries and calculations are resolved by the server only. So for each request, a server-to-client connection is required. There are several providers with SSAS to support various programming languages. These providers communicate using SOAP packets. You can understand this better with the following diagram:
+
+Client Architecture
+
+ 
+
+Click on the following link to read further:  SQL Server Analysis Services (SSAS): Part 1
+
+44. What are the integration services in SQL Server?
+Integration Services is a platform for building high-performance data integration and workflow solutions, including extraction, transformation, and loading (ETL) operations for data warehousing. This includes graphical tools and wizards for building and debugging packages.
+
+Uses of Integration Services
+
+One use of Integration Services is to merge data from multiple data stores and update the data to data warehouses and data marts. Create the Data Transformation process logic and automate the data loading process. The architecture of Integration Services Some important components of using Integration Services: 
+
+SSIS Designer
+Runtime engine
+Tasks and other executables
+Data Flow engine and Data Flow components
+API or object model
+Integration Services Service
+SQL Server Import and Export Wizard
+Other tools, wizards, and command prompt utilities
+Click on the following link to read further:  An Introduction to SQL Server Integration Service (SSIS)
+
+45. What are the master data services in SQL Server?
+MDS aims to address the challenges of operational and analytical master data management by providing a master data hub to organize, maintain and manage your master data centrally. This master data hub supports these capabilities with a scalable and extensible infrastructure built on SQL Server and the Windows Communication Foundation (WCF) APIs.
+
+Master Data Services Components
+The wizard installs Master Data Services Configuration Manager, installs the files necessary to run the Master Data Services Web service, and registers assemblies.
+
+After installation, you use the Master Data Services Configuration Manager to create and configure a Master Data Services database in a SQL Server instance that you specify, create the Master Data Services Web application, and enable the Web service.
+
+Data Stewardship
+Master Data Manager is the data stewardship portal in which authorized business users can perform all activities related to master data management. At a minimum, a user can use this Web application to review the data in a master data model. In addition, users with higher permissions can make changes to the master data and its structure, define business rules, review changes to master data, and reverse changes.
+
+Model Objects
+Most activities in MDS revolve around models and the objects they contain. A model is a container for all objects that define the structure of the master data. A model has at least one entity, which is analogous to a table in a relational database. An entity includes members, like the rows in a table, as shown in Figure 7-1. Members (also known as leaf members) are the master data you manage in MDS. Each leaf member of the entity has multiple attributes, which correspond to table columns in the analogy.
+
+model objects
+
+Master Data Maintenance
+Master Data Manager is more than a place to define model objects. It also allows you to create, edit, and update leaf members and consolidated members. For example, when you add a leaf member, you initially provide values for only the Name and Code attributes, as shown in Figure 7-4. You can also use a search button to locate and select the consolidated parent member in each hierarchy.
+
+master data maintennece
+
+Click on the following link to read further: Chapter 7: Master Data Services.
+
+46. What are the data quality services in SQL Server?
+SQL Server 2012 Data Quality Services (DQS) is the data quality product from Microsoft SQL Server 2012. DQS enables you to perform a variety of critical data quality tasks, including correction, enrichment, standardization, and de-duplication of your data. DQS provides the following features to resolve data quality issues. 
+
+Data Cleansing
+Matching
+Reference Data Services
+Profiling and Monitoring
+Knowledge Base
+Data Quality Services
+
+DQS enables you to perform data cleansing using cloud-based reference data services provided by reference data providers. DQS also provides profiling integrated into its data-quality tasks, enabling the analysis of the integrity of the data.  
+
+Data Quality Server- Data Quality Server is implemented as three SQL Server catalogs: DQS_MAIN, DQS_PROJECTS, and DQS_STAGING_DATA.
+
+DQS_MAIN includes DQS Stored Procedures, the DQS engine, and published Knowledge Bases.
+DQS_PROJECTS includes data required for Knowledge Base management and DQS project activities.
+DQS_STAGING_DATA provides an intermediate staging database where you can copy your source data to perform DQS operations and export your processed data.
+data quality services
+
+Click on the following link to read further: SQL Server 2012 Data Quality Services (DQS)
+
+47. What is replication in SQL Server?
+Replication is a process or method to synchronize the data across multiple servers. Replication is done by a replica set. A replication maintains the same data set. Replica sets provide redundancy and high availability with multiple copies of data on different database servers. Replication removes dependencies from a single server, protecting a database from losing a single server. Replication provides a mechanism to recover from hardware failure and service interruptions.
+
+Replication is also used to increase the read capacity. Replication provides choices for the client to select a different server for read and write operations. Replication maintains copies in different data centers to increase the locality and availability of data for distributed applications.
+
+Example- Snapshot Replication
+
+Step 1. Open the replication node in your database and choose the option Local Publications.
+
+image
+
+Step 2. Right-click on Local Publications and click on New publication.
+
+Step 2
+
+Step 3. After clicking on the new publication tab, the following window will appear and click on the “Next” button.
+
+Step 3
+
+Click on the following link to read further: Snapshot Replication (Setting up Publisher) in SQL Server 2008: Part 2
+
+48. What is the SQL Server Profiler?
+SQL Server Profiler is a tool that helps trace and monitors an instance of the database engine or Analysis services. Using the profiler, you can capture and save data about each event to a file or table to analyze later.
+
+SQL Server Profiler is used for activities such as:
+
+Stepping through problem queries to find the cause of the problem.
+Finding and diagnosing slow-running queries.
+Capturing the series of Transact-SQL statements that lead to a problem. The saved trace can then replicate the problem on a test server where the problem can be diagnosed.
+We are monitoring the performance of the SQL Server to tune workloads. For information about tuning the physical database design for database workloads, see Database Engine Tuning Advisor.
+Correlating performance counters to diagnose problems.
+49. How to use the profiler in SQL Server
+To use the profiler in the SQL server, you need to set up a profile first. A profile is a collection of data about the application and its features. You can create a profile by using the profiler.exe command-line tool. After creating a profile, you can use the profiler to look at any applications running in your application.
+
+50. What is SQL injection?
+SQL injection is a technique to defeat security measures to gain data access by creating a valid SQL query run without proper security measures, such as a data protection plan. This query is then used to inject malicious code into a program or database view. SQL injection can also refer to creating and running a query without an appropriate security measure, such as a data protection plan.
+
+There are three main types of SQL injection:
+
+Data injection - When data is inserted into a program without being properly protected
+Security injection - When security measures are not in place and when they are not working properly
+Query injection - When the query is run without proper security measures in place
+
 
