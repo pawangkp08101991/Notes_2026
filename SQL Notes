@@ -4,7 +4,413 @@ SQL
 1. What is SQL and why is it used?  
 2. Difference between SQL and MySQL  
 3. What are primary keys and foreign keys?  
-4. What is a unique constraint?  
+4. What is a unique constraint?  1. What is SQL and why is it used?
+
+SQL (Structured Query Language) is used to store, retrieve, manipulate, and manage data in relational databases.
+
+SELECT * FROM Employees;
+
+
+Used for:
+
+Fetching data
+
+Inserting/updating records
+
+Creating tables, views, procedures
+
+Controlling access
+
+2. Difference between SQL and MySQL
+SQL	MySQL
+Language	Database software
+Standard	Implements SQL
+Used to write queries	Executes SQL queries
+
+Example:
+
+-- SQL query
+SELECT * FROM Users;
+
+-- MySQL is the DB where this runs
+
+3. What are primary keys and foreign keys?
+
+Primary Key: Uniquely identifies a row
+
+Foreign Key: Links two tables
+
+CREATE TABLE Department (
+  DeptId INT PRIMARY KEY
+);
+
+CREATE TABLE Employee (
+  EmpId INT PRIMARY KEY,
+  DeptId INT,
+  FOREIGN KEY (DeptId) REFERENCES Department(DeptId)
+);
+
+4. What is a unique constraint?
+
+Ensures column values are unique but allows NULL.
+
+CREATE TABLE Users (
+  Email VARCHAR(100) UNIQUE
+);
+
+5. Difference between WHERE and HAVING
+WHERE	HAVING
+Filters rows	Filters groups
+Used before GROUP BY	Used after GROUP BY
+SELECT DeptId, COUNT(*)
+FROM Employee
+GROUP BY DeptId
+HAVING COUNT(*) > 5;
+
+6. What are joins? Types of joins?
+
+Joins combine data from multiple tables.
+
+Types:
+
+INNER JOIN
+
+LEFT JOIN
+
+RIGHT JOIN
+
+FULL JOIN
+
+CROSS JOIN
+
+SELECT e.Name, d.DeptName
+FROM Employee e
+INNER JOIN Department d ON e.DeptId = d.DeptId;
+
+7. Difference between INNER JOIN and LEFT JOIN
+
+INNER JOIN → matching records only
+
+LEFT JOIN → all left records + matched right
+
+SELECT *
+FROM Employee e
+LEFT JOIN Department d ON e.DeptId = d.DeptId;
+
+8. What is a subquery?
+
+A query inside another query.
+
+SELECT *
+FROM Employee
+WHERE Salary > (SELECT AVG(Salary) FROM Employee);
+
+9. What are CTEs (Common Table Expressions)?
+
+Temporary named result sets.
+
+WITH HighSalary AS (
+  SELECT * FROM Employee WHERE Salary > 50000
+)
+SELECT * FROM HighSalary;
+
+10. What is a view in SQL?
+
+A virtual table based on a query.
+
+CREATE VIEW vw_EmployeeDept AS
+SELECT e.Name, d.DeptName
+FROM Employee e
+JOIN Department d ON e.DeptId = d.DeptId;
+
+11. How do you remove duplicate records?
+DELETE FROM Employee
+WHERE EmpId NOT IN (
+  SELECT MIN(EmpId)
+  FROM Employee
+  GROUP BY Email
+);
+
+12. What is normalization? Explain its types
+
+Normalization reduces data redundancy.
+
+Form	Rule
+1NF	Atomic values
+2NF	No partial dependency
+3NF	No transitive dependency
+13. What is denormalization?
+
+Adding redundancy to improve performance.
+
+Example: storing DeptName in Employee table.
+
+14. What is a stored procedure?
+
+Precompiled SQL logic.
+
+CREATE PROCEDURE GetEmployees
+AS
+BEGIN
+  SELECT * FROM Employee;
+END;
+
+15. What are indexes and why are they used?
+
+Indexes speed up searches.
+
+CREATE INDEX idx_salary ON Employee(Salary);
+
+16. Difference between clustered and non-clustered index
+Clustered	Non-Clustered
+Sorts actual data	Separate structure
+One per table	Multiple allowed
+17. What is a transaction?
+
+A unit of work.
+
+BEGIN TRANSACTION;
+UPDATE Account SET Balance = Balance - 100 WHERE Id = 1;
+COMMIT;
+
+18. ACID properties in SQL
+
+Atomicity
+
+Consistency
+
+Isolation
+
+Durability
+
+19. Difference between DELETE, TRUNCATE, and DROP
+DELETE	TRUNCATE	DROP
+Row by row	All rows	Removes table
+Rollback	No	No
+20. What is a NULL value in SQL?
+
+Represents unknown or missing value.
+
+21. How do you handle NULLs in queries?
+SELECT ISNULL(Phone, 'N/A') FROM Users;
+
+22. What is COALESCE() in SQL?
+
+Returns first non-null value.
+
+SELECT COALESCE(Phone, Email, 'N/A') FROM Users;
+
+23. What are aggregate functions?
+
+Functions that return single values.
+
+Examples:
+
+COUNT(), SUM(), AVG(), MIN(), MAX()
+
+24. What is GROUP BY and how does it work?
+
+Groups rows.
+
+SELECT DeptId, COUNT(*)
+FROM Employee
+GROUP BY DeptId;
+
+25. Difference between COUNT(*) and COUNT(column)
+
+COUNT(*) → counts all rows
+
+COUNT(column) → ignores NULLs
+
+26. What are window functions?
+
+Operate on result set without grouping.
+
+SELECT Name, Salary,
+RANK() OVER (ORDER BY Salary DESC) AS Rank
+FROM Employee;
+
+27. Difference between RANK(), DENSE_RANK(), and ROW_NUMBER()
+Function	Gaps
+RANK	Yes
+DENSE_RANK	No
+ROW_NUMBER	Unique
+28. What is the use of LAG() and LEAD()?
+
+Access previous/next row.
+
+SELECT Salary,
+LAG(Salary) OVER (ORDER BY Salary) AS PrevSalary
+FROM Employee;
+
+29. What is a CASE statement?
+
+Conditional logic.
+
+SELECT Name,
+CASE
+  WHEN Salary > 50000 THEN 'High'
+  ELSE 'Low'
+END
+FROM Employee;
+
+30. Difference between CHAR and VARCHAR
+CHAR	VARCHAR
+Fixed length	Variable length
+Faster	Saves space
+31. What are constraints in SQL?
+
+Rules on columns.
+
+Types:
+
+PRIMARY KEY
+
+FOREIGN KEY
+
+UNIQUE
+
+CHECK
+
+NOT NULL
+
+32. What is a composite key?
+
+Primary key using multiple columns.
+
+PRIMARY KEY (OrderId, ProductId)
+
+33. Scalar vs table-valued functions
+Scalar	Table
+Returns one value	Returns table
+34. How does indexing affect performance?
+
+Faster SELECT
+
+Slower INSERT/UPDATE
+
+Uses extra space
+
+35. What is data integrity?
+
+Accuracy and consistency of data.
+
+36. What are triggers in SQL?
+
+Auto-executed on events.
+
+CREATE TRIGGER trgInsert
+ON Employee
+AFTER INSERT
+AS
+BEGIN
+  PRINT 'Inserted';
+END;
+
+37. What is a correlated subquery?
+
+Depends on outer query.
+
+SELECT *
+FROM Employee e
+WHERE Salary > (
+  SELECT AVG(Salary)
+  FROM Employee
+  WHERE DeptId = e.DeptId
+);
+
+38. What is a cross join?
+
+Cartesian product.
+
+SELECT * FROM A CROSS JOIN B;
+
+39. UNION vs UNION ALL
+UNION	UNION ALL
+Removes duplicates	Keeps duplicates
+40. Difference between EXISTS and IN
+
+EXISTS → faster for large data
+
+IN → simpler
+
+41. What are set operations in SQL?
+
+UNION
+
+INTERSECT
+
+EXCEPT
+
+42. What is a materialized view?
+
+Stores query result physically (used in Oracle/Postgres).
+
+43. Explain the BETWEEN operator
+SELECT * FROM Employee
+WHERE Salary BETWEEN 30000 AND 60000;
+
+44. What is a pivot table in SQL?
+
+Converts rows to columns.
+
+SELECT *
+FROM Sales
+PIVOT (SUM(Amount) FOR Year IN ([2024],[2025])) p;
+
+45. How do you optimize SQL queries?
+
+Use indexes
+
+Avoid SELECT *
+
+Use proper joins
+
+Analyze execution plan
+
+46. How do you handle slow queries?
+
+Check indexes
+
+Optimize joins
+
+Avoid nested subqueries
+
+Use caching
+
+47. What is execution plan in SQL?
+
+Shows how SQL executes a query.
+
+EXPLAIN SELECT * FROM Employee;
+
+48. What’s the use of LIMIT / OFFSET?
+
+Pagination.
+
+SELECT * FROM Employee
+LIMIT 10 OFFSET 20;
+
+49. How do you import/export data in SQL?
+-- Export
+SELECT * INTO BackupEmployee FROM Employee;
+
+-- Import
+LOAD DATA INFILE 'file.csv' INTO TABLE Employee;
+
+50. How would you clean messy data using SQL?
+
+Remove duplicates
+
+Handle NULLs
+
+Trim spaces
+
+Standardize formats
+
+UPDATE Users
+SET Name = TRIM(Name);
+MVC
 5. Difference between WHERE and HAVING  
 6. What are joins? Types of joins?  
 7. Difference between INNER JOIN and LEFT JOIN  
@@ -52,159 +458,413 @@ SQL
 49. How do you import/export data in SQL?  
 50. How would you clean messy data using SQL?
 
-SQL (Structured Query Language) is the standard language
-for managing relational databases, 
-used to create, read, update, and delete (CRUD) data,
-define database structures (tables, schemas),
-and control data access, making it essential for websites, apps,
-and data analysis to efficiently store, retrieve, 
-and manipulate large datasets. 
-What is SQL?
-•	A Language for Databases: SQL is a domain-specific programming language designed 
-    to communicate with databases, allowing users to issue commands.
-•	Relational Focus: It primarily works with relational databases (RDBMS), 
-    which organize data into tables with rows and columns, like spreadsheets.
-•	Standard & Versatile: It's an ANSI standard, supported by major database 
-    systems (MySQL, PostgreSQL, SQL Server, Oracle) and used across industries. 
-Why is it used?
-•	Data Management (CRUD): Perform fundamental data operations:
-o	Create: INSERT new records, CREATE TABLE.
-o	Read (Query): SELECT specific data using WHERE clauses.
-o	Update: UPDATE existing records.
-o	Delete: DELETE records or tables.
-•	Data Retrieval & Analysis: Extract insights, filter, sort, 
-    and join data from different tables for reporting and analysis.
-•	Backend Operations: Powers data storage and processing for countless applications,
-    from banking apps (Revolut) to social media (Instagram).
-•	Database Structuring: Define, modify, and maintain the structure (schema) of databases and tables.
-•	Security & Permissions: Control who can access or modify specific data.
+1. What is SQL and why is it used?
 
-SQL is a standard language for managing relational databases,
-while MySQL is a specific, open-source relational database management system 
-(RDBMS) that uses SQL as its primary query language. 
-Essentially, you use the SQL language to interact with a database system like MySQL. 
-Key Differences
-Parameter 	SQL (Structured Query Language)	MySQL
-Type	A programming language.	A Relational Database Management System (RDBMS), 
-which is a software product.
-Function	Provides the commands (like SELECT, INSERT, UPDATE) to manage and query data.
-Stores, manages, and organizes data in a structured manner using the SQL language.
-Updates	A standardized language that changes very little and rarely receives updates.
-A software product that is frequently updated with new features and enhancements.
-Portability	The core syntax is standardized and works across many RDBMS platforms
-(Oracle, SQL Server, MySQL, etc.).	A specific system with its own implementation
-and unique features, although it is cross-platform compatible (Windows, Linux, macOS).
-Licensing	Not subject to licensing as it is a language standard.	
-Open-source and free to use, though commercial licenses with dedicated
+SQL (Structured Query Language) is used to store, retrieve, manipulate, and manage data in relational databases.
 
-Primary Key
-A primary key is a column (or combination of columns) that uniquely identifies each row in a table.
-Key characteristics:
-•	Unique: No two rows can have the same primary key value
-•	Not NULL: Every row must have a value
-•	Stable: Should not change over time
+SELECT * FROM Employees;
+
+
+Used for:
+
+Fetching data
+
+Inserting/updating records
+
+Creating tables, views, procedures
+
+Controlling access
+
+2. Difference between SQL and MySQL
+SQL	MySQL
+Language	Database software
+Standard	Implements SQL
+Used to write queries	Executes SQL queries
+
 Example:
-CREATE TABLE Students (
-    student_id INT PRIMARY KEY,
-    name VARCHAR(50),
-    email VARCHAR(100)
+
+-- SQL query
+SELECT * FROM Users;
+
+-- MySQL is the DB where this runs
+
+3. What are primary keys and foreign keys?
+
+Primary Key: Uniquely identifies a row
+
+Foreign Key: Links two tables
+
+CREATE TABLE Department (
+  DeptId INT PRIMARY KEY
 );
-Here, student_id uniquely identifies each student.
-________________________________________
-Foreign Key
-A foreign key is a column (or combination of columns) that references the primary key of another table.
-It creates a relationship between tables and enforces referential integrity.
-Key characteristics:
-•	Values must exist in the referenced table’s primary key (or be NULL, if allowed)
-•	Ensures valid relationships between tables
-Example:
-CREATE TABLE Enrollments (
-    enrollment_id INT PRIMARY KEY,
-    student_id INT,
-    course_id INT,
-    FOREIGN KEY (student_id) REFERENCES Students(student_id)
+
+CREATE TABLE Employee (
+  EmpId INT PRIMARY KEY,
+  DeptId INT,
+  FOREIGN KEY (DeptId) REFERENCES Department(DeptId)
 );
-Here, student_id in Enrollments is a foreign key that links each enrollment to a valid student.
-________________________________________
-• Primary Key → Uniquely identifies a record in a table
-• Foreign Key → Links one table to another by referencing a primary key
 
-A UNIQUE constraint enforces uniqueness on one or more columns in a table.
-Example 1: UNIQUE on a Single Column
-CREATE TABLE Employees (
-    emp_id INT PRIMARY KEY,
-    email VARCHAR(100) UNIQUE,
-    name VARCHAR(50)
+4. What is a unique constraint?
+
+Ensures column values are unique but allows NULL.
+
+CREATE TABLE Users (
+  Email VARCHAR(100) UNIQUE
 );
-What this means:
-•	emp_id uniquely identifies each employee (primary key)
-•	email must be unique for every employee
 
+5. Difference between WHERE and HAVING
+WHERE	HAVING
+Filters rows	Filters groups
+Used before GROUP BY	Used after GROUP BY
+SELECT DeptId, COUNT(*)
+FROM Employee
+GROUP BY DeptId
+HAVING COUNT(*) > 5;
 
-The primary difference is that the WHERE clause filters individual rows before any grouping 
-or aggregation occurs, while the HAVING clause filters groups of rows after they have 
-been processed by a GROUP BY clause and aggregate functions. 
-Key Differences between WHERE and HAVING
-Criteria 	WHERE Clause	HAVING Clause
-Purpose	Filters individual records (rows) from a table.	Filters groups of records 
-based on aggregate conditions.
-Aggregate Functions	Cannot contain conditions with aggregate functions (e.g., COUNT(), SUM(), AVG()).	
-Must be used for conditions involving aggregate functions.
-Usage without GROUP BY	Can be used without a GROUP BY clause.	
-Generally used with a GROUP BY clause (though some SQL versions allow it without, 
-treating the entire table as one group).
-Position	Appears before the GROUP BY clause in a query.	Appears after the GROUP BY clause.
-Speed	Generally faster as it reduces the number of rows before aggregation.
-Slower as it filters the results after the data has been aggregated.
-Statements	Can be used with SELECT, UPDATE, and DELETE statements.	Can only be used with the SELECT statement.
-Example Scenarios
-•	Using WHERE: To find employees from a specific department (filtering individual rows based on a non-aggregated column).
-sql
-SELECT * FROM employees WHERE department = 'Sales';
-•	Using HAVING: To find departments that have more than 10 employees (filtering grouped results based on an aggregate function).
-sql
-SELECT department, COUNT(employee_id)
-FROM employees
-GROUP BY department
-HAVING COUNT(employee_id) > 10;
-•	Using Both: To find sales departments with more than 10 employees.
-sql
-SELECT department, COUNT(employee_id)
-FROM employees
-WHERE department = 'Sales' -- Filters rows before grouping
-GROUP BY department
-HAVING COUNT(employee_id) > 10; -- Filters the resulting group
-A JOIN in SQL combines rows from two or more tables based on a related column, creating a new, 
-temporary table for querying, with common types including INNER (matching rows only),
-LEFT (all left + matching right), RIGHT (all right + matching left), FULL (all rows from both),
-CROSS (Cartesian product), and SELF (joining a table to itself). 
-These allow you to retrieve related data efficiently, 
-supporting database normalization by reducing redundancy.  
-Common Types of SQL Joins
-1.	INNER JOIN:
-•	Purpose: Returns only the rows that have matching values in both tables. 
-•	Example: Finding customers who have actually placed orders.
-2.	LEFT (OUTER) JOIN:
-•	Purpose: Returns all rows from the left table and the matched rows from the right table; unmatched right-side columns are NULL. 
-•	Example: Listing all employees and their departments, even if some employees aren't assigned to a department.
-3.	RIGHT (OUTER) JOIN:
-•	Purpose: Returns all rows from the right table and matched rows from the left table; unmatched left-side columns are NULL. 
-•	Example: Listing all departments and their employees, including departments with no employees.
-4.	FULL (OUTER) JOIN:
-•	Purpose: Returns all rows when there's a match in either the left or right table, with NULLs for non-matching sides. 
-•	Example: Combining customer and supplier lists to see all entries from both, regardless of matches.
-Other Important Joins
-•	CROSS JOIN:
-•	Purpose: Creates the Cartesian product (all possible combinations) of rows from both tables. 
-•	Use: Generating all product-category combinations.
-•	SELF JOIN:
-•	Purpose: Joins a table to itself, treating it as two separate tables. 
-•	Use: Finding employees who report to the same manager within the same table. 
-•	NATURAL JOIN:
-•	Purpose: Automatically joins tables on columns that have the exact same name and data type, without needing an ON clause. 
+6. What are joins? Types of joins?
 
+Joins combine data from multiple tables.
 
- 
+Types:
+
+INNER JOIN
+
+LEFT JOIN
+
+RIGHT JOIN
+
+FULL JOIN
+
+CROSS JOIN
+
+SELECT e.Name, d.DeptName
+FROM Employee e
+INNER JOIN Department d ON e.DeptId = d.DeptId;
+
+7. Difference between INNER JOIN and LEFT JOIN
+
+INNER JOIN → matching records only
+
+LEFT JOIN → all left records + matched right
+
+SELECT *
+FROM Employee e
+LEFT JOIN Department d ON e.DeptId = d.DeptId;
+
+8. What is a subquery?
+
+A query inside another query.
+
+SELECT *
+FROM Employee
+WHERE Salary > (SELECT AVG(Salary) FROM Employee);
+
+9. What are CTEs (Common Table Expressions)?
+
+Temporary named result sets.
+
+WITH HighSalary AS (
+  SELECT * FROM Employee WHERE Salary > 50000
+)
+SELECT * FROM HighSalary;
+
+10. What is a view in SQL?
+
+A virtual table based on a query.
+
+CREATE VIEW vw_EmployeeDept AS
+SELECT e.Name, d.DeptName
+FROM Employee e
+JOIN Department d ON e.DeptId = d.DeptId;
+
+11. How do you remove duplicate records?
+DELETE FROM Employee
+WHERE EmpId NOT IN (
+  SELECT MIN(EmpId)
+  FROM Employee
+  GROUP BY Email
+);
+
+12. What is normalization? Explain its types
+
+Normalization reduces data redundancy.
+
+Form	Rule
+1NF	Atomic values
+2NF	No partial dependency
+3NF	No transitive dependency
+13. What is denormalization?
+
+Adding redundancy to improve performance.
+
+Example: storing DeptName in Employee table.
+
+14. What is a stored procedure?
+
+Precompiled SQL logic.
+
+CREATE PROCEDURE GetEmployees
+AS
+BEGIN
+  SELECT * FROM Employee;
+END;
+
+15. What are indexes and why are they used?
+
+Indexes speed up searches.
+
+CREATE INDEX idx_salary ON Employee(Salary);
+
+16. Difference between clustered and non-clustered index
+Clustered	Non-Clustered
+Sorts actual data	Separate structure
+One per table	Multiple allowed
+17. What is a transaction?
+
+A unit of work.
+
+BEGIN TRANSACTION;
+UPDATE Account SET Balance = Balance - 100 WHERE Id = 1;
+COMMIT;
+
+18. ACID properties in SQL
+
+Atomicity
+
+Consistency
+
+Isolation
+
+Durability
+
+19. Difference between DELETE, TRUNCATE, and DROP
+DELETE	TRUNCATE	DROP
+Row by row	All rows	Removes table
+Rollback	No	No
+20. What is a NULL value in SQL?
+
+Represents unknown or missing value.
+
+21. How do you handle NULLs in queries?
+SELECT ISNULL(Phone, 'N/A') FROM Users;
+
+22. What is COALESCE() in SQL?
+
+Returns first non-null value.
+
+SELECT COALESCE(Phone, Email, 'N/A') FROM Users;
+
+23. What are aggregate functions?
+
+Functions that return single values.
+
+Examples:
+
+COUNT(), SUM(), AVG(), MIN(), MAX()
+
+24. What is GROUP BY and how does it work?
+
+Groups rows.
+
+SELECT DeptId, COUNT(*)
+FROM Employee
+GROUP BY DeptId;
+
+25. Difference between COUNT(*) and COUNT(column)
+
+COUNT(*) → counts all rows
+
+COUNT(column) → ignores NULLs
+
+26. What are window functions?
+
+Operate on result set without grouping.
+
+SELECT Name, Salary,
+RANK() OVER (ORDER BY Salary DESC) AS Rank
+FROM Employee;
+
+27. Difference between RANK(), DENSE_RANK(), and ROW_NUMBER()
+Function	Gaps
+RANK	Yes
+DENSE_RANK	No
+ROW_NUMBER	Unique
+28. What is the use of LAG() and LEAD()?
+
+Access previous/next row.
+
+SELECT Salary,
+LAG(Salary) OVER (ORDER BY Salary) AS PrevSalary
+FROM Employee;
+
+29. What is a CASE statement?
+
+Conditional logic.
+
+SELECT Name,
+CASE
+  WHEN Salary > 50000 THEN 'High'
+  ELSE 'Low'
+END
+FROM Employee;
+
+30. Difference between CHAR and VARCHAR
+CHAR	VARCHAR
+Fixed length	Variable length
+Faster	Saves space
+31. What are constraints in SQL?
+
+Rules on columns.
+
+Types:
+
+PRIMARY KEY
+
+FOREIGN KEY
+
+UNIQUE
+
+CHECK
+
+NOT NULL
+
+32. What is a composite key?
+
+Primary key using multiple columns.
+
+PRIMARY KEY (OrderId, ProductId)
+
+33. Scalar vs table-valued functions
+Scalar	Table
+Returns one value	Returns table
+34. How does indexing affect performance?
+
+Faster SELECT
+
+Slower INSERT/UPDATE
+
+Uses extra space
+
+35. What is data integrity?
+
+Accuracy and consistency of data.
+
+36. What are triggers in SQL?
+
+Auto-executed on events.
+
+CREATE TRIGGER trgInsert
+ON Employee
+AFTER INSERT
+AS
+BEGIN
+  PRINT 'Inserted';
+END;
+
+37. What is a correlated subquery?
+
+Depends on outer query.
+
+SELECT *
+FROM Employee e
+WHERE Salary > (
+  SELECT AVG(Salary)
+  FROM Employee
+  WHERE DeptId = e.DeptId
+);
+
+38. What is a cross join?
+
+Cartesian product.
+
+SELECT * FROM A CROSS JOIN B;
+
+39. UNION vs UNION ALL
+UNION	UNION ALL
+Removes duplicates	Keeps duplicates
+40. Difference between EXISTS and IN
+
+EXISTS → faster for large data
+
+IN → simpler
+
+41. What are set operations in SQL?
+
+UNION
+
+INTERSECT
+
+EXCEPT
+
+42. What is a materialized view?
+
+Stores query result physically (used in Oracle/Postgres).
+
+43. Explain the BETWEEN operator
+SELECT * FROM Employee
+WHERE Salary BETWEEN 30000 AND 60000;
+
+44. What is a pivot table in SQL?
+
+Converts rows to columns.
+
+SELECT *
+FROM Sales
+PIVOT (SUM(Amount) FOR Year IN ([2024],[2025])) p;
+
+45. How do you optimize SQL queries?
+
+Use indexes
+
+Avoid SELECT *
+
+Use proper joins
+
+Analyze execution plan
+
+46. How do you handle slow queries?
+
+Check indexes
+
+Optimize joins
+
+Avoid nested subqueries
+
+Use caching
+
+47. What is execution plan in SQL?
+
+Shows how SQL executes a query.
+
+EXPLAIN SELECT * FROM Employee;
+
+48. What’s the use of LIMIT / OFFSET?
+
+Pagination.
+
+SELECT * FROM Employee
+LIMIT 10 OFFSET 20;
+
+49. How do you import/export data in SQL?
+-- Export
+SELECT * INTO BackupEmployee FROM Employee;
+
+-- Import
+LOAD DATA INFILE 'file.csv' INTO TABLE Employee;
+
+50. How would you clean messy data using SQL?
+
+Remove duplicates
+
+Handle NULLs
+
+Trim spaces
+
+Standardize formats
+
+UPDATE Users
+SET Name = TRIM(Name);
+
 
 
 1. What is a Table?
