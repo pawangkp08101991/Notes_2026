@@ -1,1 +1,174 @@
-OOP
+C# Interview Questions with Answers (QuestionPond)
+.NET / C# Basics
+
+Explain difference between .NET and C#?
+
+.NET Framework vs .NET Core vs .NET 5.0
+
+What is IL (Intermediate Language) code?
+
+What is the use of JIT (Just In Time compiler)?
+
+Is it possible to view IL code?
+
+What is the benefit of compiling into IL code?
+
+Does .NET support multiple programming languages?
+
+What is CLR (Common Language Runtime)?
+
+What is managed and unmanaged code?
+
+Explain the importance of Garbage Collector?
+
+Can garbage collector claim unmanaged objects?
+
+What is the importance of CTS?
+
+Explain CLS?
+
+Difference between Stack vs Heap?
+
+What are Value types & Reference types?
+
+Explain boxing and unboxing?
+
+What is consequence of boxing and unboxing?
+
+Explain casting, implicit casting and explicit casting?
+
+What can happen during explicit casting?
+
+Differentiate between Array and ArrayList?
+
+Whose performance is better: Array or ArrayList?
+
+What are generic collections?
+
+Multithreading & Exception Handling
+
+What are threads (Multithreading)?
+
+How are threads different from TPL?
+
+How do we handle exceptions in C# (try/catch)?
+
+What is the need of finally?
+
+Keywords, Delegates & Events
+
+Why do we need the out keyword?
+
+What is the need of Delegates?
+
+What are events?
+
+What’s the difference between Abstract class and Interface?
+
+What is a Delegate and how to create a Delegate?
+
+Where have you used Delegates?
+
+What is a Multicast Delegate?
+
+What is an Event?
+
+How to create an Event?
+
+Delegate vs Events
+
+OOP Concepts
+
+Why do we need OOP?
+
+What are the important pillars of OOP?
+
+What is a class and object?
+
+Abstraction vs Encapsulation?
+
+Explain Inheritance?
+
+Explain Polymorphism?
+
+Can polymorphism work without inheritance?
+
+Explain overloading?
+
+Overloading vs Overriding?
+
+What is polymorphism?
+
+Can polymorphism work without inheritance?
+
+Explain static vs dynamic polymorphism?
+
+Explain operator overloading?
+
+How to do custom operator overloading?
+
+Abstract Classes & Interfaces
+
+Why do we need Abstract classes?
+
+Are Abstract methods virtual?
+
+Can we create an instance of Abstract classes?
+
+Is it compulsory to implement Abstract methods?
+
+Why simple base class cannot replace Abstract class?
+
+Explain interfaces and why do we need it?
+
+Can we write logic in interface?
+
+Can we define methods as private in interface?
+
+If I want to change interface, what’s the best practice?
+
+Explain Multiple inheritance in Interface?
+
+Explain Interface Segregation Principle?
+
+Can we create instance of interface?
+
+Can we do Multiple inheritance with Abstract classes?
+
+Abstract vs Interfaces?
+
+Constructors & Execution Flow
+
+Why do we need constructors?
+
+In parent-child, which constructor fires first?
+
+How are initializers executed?
+
+How are static constructors executed in parent-child?
+
+When does static constructor fire?
+
+Advanced OOP
+
+What is Shadowing?
+
+Explain method hiding?
+
+Shadowing vs Overriding?
+
+When do we need Shadowing?
+
+Explain Sealed Classes?
+
+Can we create instance of sealed classes?
+
+What are nested classes and when to use them?
+
+Can nested class access outer class members?
+
+Can we have public, protected access modifiers in nested classes?
+
+Explain Partial classes?
+
+In what scenarios do we use partial classes?
