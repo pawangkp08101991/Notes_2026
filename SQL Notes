@@ -3149,3 +3149,1029 @@ Security injection - When security measures are not in place and when they are n
 Query injection - When the query is run without proper security measures in place
 
 
+500 SQL Interview Queries & Examples
+This PDF contains categorized SQL interview queries and examples useful for 5 to 10+ years experienced developers
+working with SQL Server.
+Basic SELECT Queries
+1. Basic SELECT Queries Query
+SELECT * FROM Employee;
+2. Basic SELECT Queries Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+3. Basic SELECT Queries Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+4. Basic SELECT Queries Query
+SELECT * FROM Employee WHERE Salary > 50000;
+5. Basic SELECT Queries Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+6. Basic SELECT Queries Query
+SELECT MAX(Salary) FROM Employee;
+7. Basic SELECT Queries Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+8. Basic SELECT Queries Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+9. Basic SELECT Queries Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+10. Basic SELECT Queries Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+11. Basic SELECT Queries Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+12. Basic SELECT Queries Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+13. Basic SELECT Queries Query
+SELECT GETDATE();
+14. Basic SELECT Queries Query
+SELECT UPPER(Name) FROM Employee;
+15. Basic SELECT Queries Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+16. Basic SELECT Queries Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+17. Basic SELECT Queries Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+18. Basic SELECT Queries Query
+SELECT DISTINCT Salary FROM Employee;
+19. Basic SELECT Queries Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+20. Basic SELECT Queries Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+21. Basic SELECT Queries Query
+SELECT * FROM Employee;
+22. Basic SELECT Queries Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+23. Basic SELECT Queries Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+24. Basic SELECT Queries Query
+SELECT * FROM Employee WHERE Salary > 50000;
+25. Basic SELECT Queries Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Filtering & Sorting
+26. Filtering & Sorting Query
+SELECT * FROM Employee;
+27. Filtering & Sorting Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+28. Filtering & Sorting Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+29. Filtering & Sorting Query
+SELECT * FROM Employee WHERE Salary > 50000;
+30. Filtering & Sorting Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+31. Filtering & Sorting Query
+SELECT MAX(Salary) FROM Employee;
+32. Filtering & Sorting Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+33. Filtering & Sorting Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+34. Filtering & Sorting Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+35. Filtering & Sorting Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+36. Filtering & Sorting Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+37. Filtering & Sorting Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+38. Filtering & Sorting Query
+SELECT GETDATE();
+39. Filtering & Sorting Query
+SELECT UPPER(Name) FROM Employee;
+40. Filtering & Sorting Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+41. Filtering & Sorting Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+42. Filtering & Sorting Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+43. Filtering & Sorting Query
+SELECT DISTINCT Salary FROM Employee;
+44. Filtering & Sorting Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+45. Filtering & Sorting Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+46. Filtering & Sorting Query
+SELECT * FROM Employee;
+47. Filtering & Sorting Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+48. Filtering & Sorting Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+49. Filtering & Sorting Query
+SELECT * FROM Employee WHERE Salary > 50000;
+50. Filtering & Sorting Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Aggregate Functions
+51. Aggregate Functions Query
+SELECT * FROM Employee;
+52. Aggregate Functions Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+53. Aggregate Functions Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+54. Aggregate Functions Query
+SELECT * FROM Employee WHERE Salary > 50000;
+55. Aggregate Functions Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+56. Aggregate Functions Query
+SELECT MAX(Salary) FROM Employee;
+57. Aggregate Functions Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+58. Aggregate Functions Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+59. Aggregate Functions Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+60. Aggregate Functions Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+61. Aggregate Functions Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+62. Aggregate Functions Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+63. Aggregate Functions Query
+SELECT GETDATE();
+64. Aggregate Functions Query
+SELECT UPPER(Name) FROM Employee;
+65. Aggregate Functions Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+66. Aggregate Functions Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+67. Aggregate Functions Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+68. Aggregate Functions Query
+SELECT DISTINCT Salary FROM Employee;
+69. Aggregate Functions Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+70. Aggregate Functions Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+71. Aggregate Functions Query
+SELECT * FROM Employee;
+72. Aggregate Functions Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+73. Aggregate Functions Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+74. Aggregate Functions Query
+SELECT * FROM Employee WHERE Salary > 50000;
+75. Aggregate Functions Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+GROUP BY & HAVING
+76. GROUP BY & HAVING Query
+SELECT * FROM Employee;
+77. GROUP BY & HAVING Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+78. GROUP BY & HAVING Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+79. GROUP BY & HAVING Query
+SELECT * FROM Employee WHERE Salary > 50000;
+80. GROUP BY & HAVING Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+81. GROUP BY & HAVING Query
+SELECT MAX(Salary) FROM Employee;
+82. GROUP BY & HAVING Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+83. GROUP BY & HAVING Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+84. GROUP BY & HAVING Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+85. GROUP BY & HAVING Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+86. GROUP BY & HAVING Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+87. GROUP BY & HAVING Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+88. GROUP BY & HAVING Query
+SELECT GETDATE();
+89. GROUP BY & HAVING Query
+SELECT UPPER(Name) FROM Employee;
+90. GROUP BY & HAVING Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+91. GROUP BY & HAVING Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+92. GROUP BY & HAVING Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+93. GROUP BY & HAVING Query
+SELECT DISTINCT Salary FROM Employee;
+94. GROUP BY & HAVING Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+95. GROUP BY & HAVING Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+96. GROUP BY & HAVING Query
+SELECT * FROM Employee;
+97. GROUP BY & HAVING Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+98. GROUP BY & HAVING Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+99. GROUP BY & HAVING Query
+SELECT * FROM Employee WHERE Salary > 50000;
+100. GROUP BY & HAVING Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+JOINS
+101. JOINS Query
+SELECT * FROM Employee;
+102. JOINS Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+103. JOINS Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+104. JOINS Query
+SELECT * FROM Employee WHERE Salary > 50000;
+105. JOINS Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+106. JOINS Query
+SELECT MAX(Salary) FROM Employee;
+107. JOINS Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+108. JOINS Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+109. JOINS Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+110. JOINS Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+111. JOINS Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+112. JOINS Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+113. JOINS Query
+SELECT GETDATE();
+114. JOINS Query
+SELECT UPPER(Name) FROM Employee;
+115. JOINS Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+116. JOINS Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+117. JOINS Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+118. JOINS Query
+SELECT DISTINCT Salary FROM Employee;
+119. JOINS Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+120. JOINS Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+121. JOINS Query
+SELECT * FROM Employee;
+122. JOINS Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+123. JOINS Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+124. JOINS Query
+SELECT * FROM Employee WHERE Salary > 50000;
+125. JOINS Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Subqueries
+126. Subqueries Query
+SELECT * FROM Employee;
+127. Subqueries Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+128. Subqueries Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+129. Subqueries Query
+SELECT * FROM Employee WHERE Salary > 50000;
+130. Subqueries Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+131. Subqueries Query
+SELECT MAX(Salary) FROM Employee;
+132. Subqueries Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+133. Subqueries Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+134. Subqueries Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+135. Subqueries Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+136. Subqueries Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+137. Subqueries Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+138. Subqueries Query
+SELECT GETDATE();
+139. Subqueries Query
+SELECT UPPER(Name) FROM Employee;
+140. Subqueries Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+141. Subqueries Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+142. Subqueries Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+143. Subqueries Query
+SELECT DISTINCT Salary FROM Employee;
+144. Subqueries Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+145. Subqueries Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+146. Subqueries Query
+SELECT * FROM Employee;
+147. Subqueries Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+148. Subqueries Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+149. Subqueries Query
+SELECT * FROM Employee WHERE Salary > 50000;
+150. Subqueries Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+CTE Queries
+151. CTE Queries Query
+SELECT * FROM Employee;
+152. CTE Queries Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+153. CTE Queries Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+154. CTE Queries Query
+SELECT * FROM Employee WHERE Salary > 50000;
+155. CTE Queries Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+156. CTE Queries Query
+SELECT MAX(Salary) FROM Employee;
+157. CTE Queries Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+158. CTE Queries Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+159. CTE Queries Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+160. CTE Queries Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+161. CTE Queries Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+162. CTE Queries Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+163. CTE Queries Query
+SELECT GETDATE();
+164. CTE Queries Query
+SELECT UPPER(Name) FROM Employee;
+165. CTE Queries Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+166. CTE Queries Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+167. CTE Queries Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+168. CTE Queries Query
+SELECT DISTINCT Salary FROM Employee;
+169. CTE Queries Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+170. CTE Queries Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+171. CTE Queries Query
+SELECT * FROM Employee;
+172. CTE Queries Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+173. CTE Queries Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+174. CTE Queries Query
+SELECT * FROM Employee WHERE Salary > 50000;
+175. CTE Queries Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Window Functions
+176. Window Functions Query
+SELECT * FROM Employee;
+177. Window Functions Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+178. Window Functions Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+179. Window Functions Query
+SELECT * FROM Employee WHERE Salary > 50000;
+180. Window Functions Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+181. Window Functions Query
+SELECT MAX(Salary) FROM Employee;
+182. Window Functions Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+183. Window Functions Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+184. Window Functions Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+185. Window Functions Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+186. Window Functions Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+187. Window Functions Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+188. Window Functions Query
+SELECT GETDATE();
+189. Window Functions Query
+SELECT UPPER(Name) FROM Employee;
+190. Window Functions Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+191. Window Functions Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+192. Window Functions Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+193. Window Functions Query
+SELECT DISTINCT Salary FROM Employee;
+194. Window Functions Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+195. Window Functions Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+196. Window Functions Query
+SELECT * FROM Employee;
+197. Window Functions Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+198. Window Functions Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+199. Window Functions Query
+SELECT * FROM Employee WHERE Salary > 50000;
+200. Window Functions Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Stored Procedures
+201. Stored Procedures Query
+SELECT * FROM Employee;
+202. Stored Procedures Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+203. Stored Procedures Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+204. Stored Procedures Query
+SELECT * FROM Employee WHERE Salary > 50000;
+205. Stored Procedures Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+206. Stored Procedures Query
+SELECT MAX(Salary) FROM Employee;
+207. Stored Procedures Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+208. Stored Procedures Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+209. Stored Procedures Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+210. Stored Procedures Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+211. Stored Procedures Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+212. Stored Procedures Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+213. Stored Procedures Query
+SELECT GETDATE();
+214. Stored Procedures Query
+SELECT UPPER(Name) FROM Employee;
+215. Stored Procedures Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+216. Stored Procedures Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+217. Stored Procedures Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+218. Stored Procedures Query
+SELECT DISTINCT Salary FROM Employee;
+219. Stored Procedures Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+220. Stored Procedures Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+221. Stored Procedures Query
+SELECT * FROM Employee;
+222. Stored Procedures Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+223. Stored Procedures Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+224. Stored Procedures Query
+SELECT * FROM Employee WHERE Salary > 50000;
+225. Stored Procedures Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Triggers
+226. Triggers Query
+SELECT * FROM Employee;
+227. Triggers Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+228. Triggers Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+229. Triggers Query
+SELECT * FROM Employee WHERE Salary > 50000;
+230. Triggers Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+231. Triggers Query
+SELECT MAX(Salary) FROM Employee;
+232. Triggers Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+233. Triggers Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+234. Triggers Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+235. Triggers Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+236. Triggers Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+237. Triggers Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+238. Triggers Query
+SELECT GETDATE();
+239. Triggers Query
+SELECT UPPER(Name) FROM Employee;
+240. Triggers Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+241. Triggers Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+242. Triggers Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+243. Triggers Query
+SELECT DISTINCT Salary FROM Employee;
+244. Triggers Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+245. Triggers Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+246. Triggers Query
+SELECT * FROM Employee;
+247. Triggers Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+248. Triggers Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+249. Triggers Query
+SELECT * FROM Employee WHERE Salary > 50000;
+250. Triggers Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Views
+251. Views Query
+SELECT * FROM Employee;
+252. Views Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+253. Views Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+254. Views Query
+SELECT * FROM Employee WHERE Salary > 50000;
+255. Views Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+256. Views Query
+SELECT MAX(Salary) FROM Employee;
+257. Views Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+258. Views Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+259. Views Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+260. Views Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+261. Views Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+262. Views Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+263. Views Query
+SELECT GETDATE();
+264. Views Query
+SELECT UPPER(Name) FROM Employee;
+265. Views Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+266. Views Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+267. Views Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+268. Views Query
+SELECT DISTINCT Salary FROM Employee;
+269. Views Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+270. Views Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+271. Views Query
+SELECT * FROM Employee;
+272. Views Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+273. Views Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+274. Views Query
+SELECT * FROM Employee WHERE Salary > 50000;
+275. Views Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Indexing
+276. Indexing Query
+SELECT * FROM Employee;
+277. Indexing Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+278. Indexing Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+279. Indexing Query
+SELECT * FROM Employee WHERE Salary > 50000;
+280. Indexing Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+281. Indexing Query
+SELECT MAX(Salary) FROM Employee;
+282. Indexing Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+283. Indexing Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+284. Indexing Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+285. Indexing Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+286. Indexing Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+287. Indexing Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+288. Indexing Query
+SELECT GETDATE();
+289. Indexing Query
+SELECT UPPER(Name) FROM Employee;
+290. Indexing Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+291. Indexing Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+292. Indexing Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+293. Indexing Query
+SELECT DISTINCT Salary FROM Employee;
+294. Indexing Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+295. Indexing Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+296. Indexing Query
+SELECT * FROM Employee;
+297. Indexing Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+298. Indexing Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+299. Indexing Query
+SELECT * FROM Employee WHERE Salary > 50000;
+300. Indexing Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Transactions
+301. Transactions Query
+SELECT * FROM Employee;
+302. Transactions Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+303. Transactions Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+304. Transactions Query
+SELECT * FROM Employee WHERE Salary > 50000;
+305. Transactions Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+306. Transactions Query
+SELECT MAX(Salary) FROM Employee;
+307. Transactions Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+308. Transactions Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+309. Transactions Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+310. Transactions Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+311. Transactions Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+312. Transactions Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+313. Transactions Query
+SELECT GETDATE();
+314. Transactions Query
+SELECT UPPER(Name) FROM Employee;
+315. Transactions Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+316. Transactions Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+317. Transactions Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+318. Transactions Query
+SELECT DISTINCT Salary FROM Employee;
+319. Transactions Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+320. Transactions Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+321. Transactions Query
+SELECT * FROM Employee;
+322. Transactions Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+323. Transactions Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+324. Transactions Query
+SELECT * FROM Employee WHERE Salary > 50000;
+325. Transactions Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Date Functions
+326. Date Functions Query
+SELECT * FROM Employee;
+327. Date Functions Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+328. Date Functions Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+329. Date Functions Query
+SELECT * FROM Employee WHERE Salary > 50000;
+330. Date Functions Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+331. Date Functions Query
+SELECT MAX(Salary) FROM Employee;
+332. Date Functions Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+333. Date Functions Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+334. Date Functions Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+335. Date Functions Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+336. Date Functions Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+337. Date Functions Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+338. Date Functions Query
+SELECT GETDATE();
+339. Date Functions Query
+SELECT UPPER(Name) FROM Employee;
+340. Date Functions Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+341. Date Functions Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+342. Date Functions Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+343. Date Functions Query
+SELECT DISTINCT Salary FROM Employee;
+344. Date Functions Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+345. Date Functions Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+346. Date Functions Query
+SELECT * FROM Employee;
+347. Date Functions Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+348. Date Functions Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+349. Date Functions Query
+SELECT * FROM Employee WHERE Salary > 50000;
+350. Date Functions Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+String Functions
+351. String Functions Query
+SELECT * FROM Employee;
+352. String Functions Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+353. String Functions Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+354. String Functions Query
+SELECT * FROM Employee WHERE Salary > 50000;
+355. String Functions Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+356. String Functions Query
+SELECT MAX(Salary) FROM Employee;
+357. String Functions Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+358. String Functions Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+359. String Functions Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+360. String Functions Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+361. String Functions Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+362. String Functions Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+363. String Functions Query
+SELECT GETDATE();
+364. String Functions Query
+SELECT UPPER(Name) FROM Employee;
+365. String Functions Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+366. String Functions Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+367. String Functions Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+368. String Functions Query
+SELECT DISTINCT Salary FROM Employee;
+369. String Functions Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+370. String Functions Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+371. String Functions Query
+SELECT * FROM Employee;
+372. String Functions Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+373. String Functions Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+374. String Functions Query
+SELECT * FROM Employee WHERE Salary > 50000;
+375. String Functions Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Pivot & Dynamic Pivot
+376. Pivot & Dynamic Pivot Query
+SELECT * FROM Employee;
+377. Pivot & Dynamic Pivot Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+378. Pivot & Dynamic Pivot Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+379. Pivot & Dynamic Pivot Query
+SELECT * FROM Employee WHERE Salary > 50000;
+380. Pivot & Dynamic Pivot Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+381. Pivot & Dynamic Pivot Query
+SELECT MAX(Salary) FROM Employee;
+382. Pivot & Dynamic Pivot Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+383. Pivot & Dynamic Pivot Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+384. Pivot & Dynamic Pivot Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+385. Pivot & Dynamic Pivot Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+386. Pivot & Dynamic Pivot Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+387. Pivot & Dynamic Pivot Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+388. Pivot & Dynamic Pivot Query
+SELECT GETDATE();
+389. Pivot & Dynamic Pivot Query
+SELECT UPPER(Name) FROM Employee;
+390. Pivot & Dynamic Pivot Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+391. Pivot & Dynamic Pivot Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+392. Pivot & Dynamic Pivot Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+393. Pivot & Dynamic Pivot Query
+SELECT DISTINCT Salary FROM Employee;
+394. Pivot & Dynamic Pivot Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+395. Pivot & Dynamic Pivot Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+396. Pivot & Dynamic Pivot Query
+SELECT * FROM Employee;
+397. Pivot & Dynamic Pivot Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+398. Pivot & Dynamic Pivot Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+399. Pivot & Dynamic Pivot Query
+SELECT * FROM Employee WHERE Salary > 50000;
+400. Pivot & Dynamic Pivot Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Recursive Queries
+401. Recursive Queries Query
+SELECT * FROM Employee;
+402. Recursive Queries Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+403. Recursive Queries Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+404. Recursive Queries Query
+SELECT * FROM Employee WHERE Salary > 50000;
+405. Recursive Queries Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+406. Recursive Queries Query
+SELECT MAX(Salary) FROM Employee;
+407. Recursive Queries Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+408. Recursive Queries Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+409. Recursive Queries Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+410. Recursive Queries Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+411. Recursive Queries Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+412. Recursive Queries Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+413. Recursive Queries Query
+SELECT GETDATE();
+414. Recursive Queries Query
+SELECT UPPER(Name) FROM Employee;
+415. Recursive Queries Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+416. Recursive Queries Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+417. Recursive Queries Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+418. Recursive Queries Query
+SELECT DISTINCT Salary FROM Employee;
+419. Recursive Queries Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+420. Recursive Queries Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+421. Recursive Queries Query
+SELECT * FROM Employee;
+422. Recursive Queries Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+423. Recursive Queries Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+424. Recursive Queries Query
+SELECT * FROM Employee WHERE Salary > 50000;
+425. Recursive Queries Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Optimization Queries
+426. Optimization Queries Query
+SELECT * FROM Employee;
+427. Optimization Queries Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+428. Optimization Queries Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+429. Optimization Queries Query
+SELECT * FROM Employee WHERE Salary > 50000;
+430. Optimization Queries Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+431. Optimization Queries Query
+SELECT MAX(Salary) FROM Employee;
+432. Optimization Queries Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+433. Optimization Queries Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+434. Optimization Queries Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+435. Optimization Queries Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+436. Optimization Queries Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+437. Optimization Queries Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+438. Optimization Queries Query
+SELECT GETDATE();
+439. Optimization Queries Query
+SELECT UPPER(Name) FROM Employee;
+440. Optimization Queries Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+441. Optimization Queries Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+442. Optimization Queries Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+443. Optimization Queries Query
+SELECT DISTINCT Salary FROM Employee;
+444. Optimization Queries Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+445. Optimization Queries Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+446. Optimization Queries Query
+SELECT * FROM Employee;
+447. Optimization Queries Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+448. Optimization Queries Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+449. Optimization Queries Query
+SELECT * FROM Employee WHERE Salary > 50000;
+450. Optimization Queries Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Real-Time Scenarios
+451. Real-Time Scenarios Query
+SELECT * FROM Employee;
+452. Real-Time Scenarios Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+453. Real-Time Scenarios Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+454. Real-Time Scenarios Query
+SELECT * FROM Employee WHERE Salary > 50000;
+455. Real-Time Scenarios Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+456. Real-Time Scenarios Query
+SELECT MAX(Salary) FROM Employee;
+457. Real-Time Scenarios Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+458. Real-Time Scenarios Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+459. Real-Time Scenarios Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+460. Real-Time Scenarios Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+461. Real-Time Scenarios Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+462. Real-Time Scenarios Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+463. Real-Time Scenarios Query
+SELECT GETDATE();
+464. Real-Time Scenarios Query
+SELECT UPPER(Name) FROM Employee;
+465. Real-Time Scenarios Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+466. Real-Time Scenarios Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+467. Real-Time Scenarios Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+468. Real-Time Scenarios Query
+SELECT DISTINCT Salary FROM Employee;
+469. Real-Time Scenarios Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+470. Real-Time Scenarios Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+471. Real-Time Scenarios Query
+SELECT * FROM Employee;
+472. Real-Time Scenarios Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+473. Real-Time Scenarios Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+474. Real-Time Scenarios Query
+SELECT * FROM Employee WHERE Salary > 50000;
+475. Real-Time Scenarios Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Advanced SQL Server
+476. Advanced SQL Server Query
+SELECT * FROM Employee;
+477. Advanced SQL Server Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+478. Advanced SQL Server Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+479. Advanced SQL Server Query
+SELECT * FROM Employee WHERE Salary > 50000;
+480. Advanced SQL Server Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+481. Advanced SQL Server Query
+SELECT MAX(Salary) FROM Employee;
+482. Advanced SQL Server Query
+WITH CTE AS (SELECT * FROM Employee) SELECT * FROM CTE;
+483. Advanced SQL Server Query
+SELECT ROW_NUMBER() OVER(ORDER BY Salary DESC) AS RowNum FROM Employee;
+484. Advanced SQL Server Query
+CREATE PROCEDURE GetEmployee AS BEGIN SELECT * FROM Employee END;
+485. Advanced SQL Server Query
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+486. Advanced SQL Server Query
+CREATE INDEX IX_Employee_Name ON Employee(Name);
+487. Advanced SQL Server Query
+BEGIN TRANSACTION UPDATE Employee SET Salary = Salary + 1000 COMMIT;
+488. Advanced SQL Server Query
+SELECT GETDATE();
+489. Advanced SQL Server Query
+SELECT UPPER(Name) FROM Employee;
+490. Advanced SQL Server Query
+SELECT * FROM Employee PIVOT (SUM(Salary) FOR DepartmentId IN ([1],[2],[3])) AS P;
+491. Advanced SQL Server Query
+WITH Numbers AS (SELECT 1 Num UNION ALL SELECT Num + 1 FROM Numbers WHERE Num < 10) SELECT * FROM Numbers;
+492. Advanced SQL Server Query
+SELECT * FROM Employee WHERE EXISTS (SELECT 1 FROM Department D WHERE D.Id = Employee.DepartmentId);
+493. Advanced SQL Server Query
+SELECT DISTINCT Salary FROM Employee;
+494. Advanced SQL Server Query
+SELECT Name, RANK() OVER(ORDER BY Salary DESC) FROM Employee;
+495. Advanced SQL Server Query
+SELECT * FROM Employee WHERE JoiningDate >= DATEADD(DAY,-30,GETDATE());
+496. Advanced SQL Server Query
+SELECT * FROM Employee;
+497. Advanced SQL Server Query
+SELECT TOP 10 * FROM Employee ORDER BY Salary DESC;
+498. Advanced SQL Server Query
+SELECT DepartmentId, COUNT(*) FROM Employee GROUP BY DepartmentId;
+499. Advanced SQL Server Query
+SELECT * FROM Employee WHERE Salary > 50000;
+500. Advanced SQL Server Query
+SELECT E.Name, D.DepartmentName FROM Employee E INNER JOIN Department D ON E.DepartmentId = D.Id;
+Topics Covered: SQL Server, Stored Procedures, Performance Tuning, Window Functions, Dynamic SQL, Real-Time
+Queries, Indexing, Transactions, and Advanced SQL Concepts.
+
