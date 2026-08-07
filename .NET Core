@@ -1,0 +1,741 @@
+
+
+
+.net core with react interview questions
+
+Since you have 6+ years of experience in .NET, ASP.NET MVC, SQL Server, and are moving toward .NET Core + React, interviewers will usually focus on architecture, APIs, authentication, Entity Framework Core, React Hooks, state management, and performance.
+
+.NET Core Interview Questions
+1. What is .NET Core?
+.NET Core (now part of .NET 5+) is a cross-platform, open-source framework used for building web, desktop, cloud, microservices, and API applications.
+
+2. Difference between .NET Framework and .NET Core?
+.NET Framework	.NET Core
+Windows only	Cross-platform
+Monolithic	Lightweight
+IIS dependent	Self-hosted/Kestrel
+Less performance	Better performance
+3. What is Middleware in ASP.NET Core?
+Middleware components handle requests and responses in the pipeline.
+
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
+Common middleware:
+
+Authentication
+
+Authorization
+
+Exception Handling
+
+Routing
+
+CORS
+
+4. What is Dependency Injection?
+A design pattern used to inject services into classes instead of creating objects manually.
+
+builder.Services.AddScoped<IUserService, UserService>();
+Types:
+
+Transient
+
+Scoped
+
+Singleton
+
+5. Difference between Transient, Scoped, and Singleton?
+Lifetime	Created
+Transient	Every request
+Scoped	Per HTTP Request
+Singleton	Once for application
+6. What is Kestrel?
+Kestrel is the default cross-platform web server for ASP.NET Core.
+
+7. What is IConfiguration?
+Used to read configuration from:
+
+appsettings.json
+
+Environment Variables
+
+Azure Key Vault
+
+var conn = configuration.GetConnectionString("DefaultConnection");
+8. What is Entity Framework Core?
+ORM framework that maps database tables to C# classes.
+
+var users = await _context.Users.ToListAsync();
+9. What is Migration?
+Used to update database schema.
+
+Add-Migration InitialCreate
+Update-Database
+10. Difference between FirstOrDefault and SingleOrDefault?
+FirstOrDefault()
+Returns first matching record.
+
+SingleOrDefault()
+Throws exception if multiple records exist.
+
+11. What is Repository Pattern?
+Separates business logic from data access layer.
+
+public interface IUserRepository
+{
+    Task<List<User>> GetAll();
+}
+12. What is JWT Authentication?
+JSON Web Token is used for secure authentication.
+
+Flow:
+
+User Login
+
+Token Generated
+
+Token Sent in Header
+
+API Validates Token
+
+Authorization: Bearer Token
+13. What is CORS?
+Cross-Origin Resource Sharing allows React application to access .NET APIs.
+
+builder.Services.AddCors();
+14. What is Async/Await?
+Improves application performance by freeing threads.
+
+public async Task<User> GetUser()
+{
+    return await _context.Users.FirstOrDefaultAsync();
+}
+15. What is REST API?
+Uses HTTP methods:
+
+GET
+
+POST
+
+PUT
+
+DELETE
+
+React Interview Questions
+1. What is React?
+A JavaScript library used for building UI components.
+
+2. What is JSX?
+Allows HTML-like syntax inside JavaScript.
+
+const element = <h1>Hello</h1>;
+3. Difference between State and Props?
+State	Props
+Mutable	Immutable
+Managed inside component	Passed from parent
+4. What are React Hooks?
+Hooks allow functional components to use state and lifecycle methods.
+
+Examples:
+
+useState()
+useEffect()
+useRef()
+useMemo()
+useCallback()
+5. What is useState?
+const [count, setCount] = useState(0);
+Used to manage component state.
+
+6. What is useEffect?
+Used for side effects.
+
+useEffect(() => {
+   loadData();
+}, []);
+Runs once on component load.
+
+7. Difference between useEffect and useLayoutEffect?
+useEffect	useLayoutEffect
+Async	Sync
+After Render	Before Paint
+8. What is Virtual DOM?
+React updates only changed elements instead of entire page rendering.
+
+9. What is React Router?
+Used for navigation.
+
+<Route path="/users" element={<Users />} />
+10. What is Context API?
+Used for state sharing without prop drilling.
+
+const UserContext = createContext();
+11. What is Redux?
+Centralized state management.
+
+Store:
+
+Actions
+
+Reducers
+
+Store
+
+12. What is useMemo?
+Used to optimize expensive calculations.
+
+const total = useMemo(() => calculateTotal(), [items]);
+13. What is useCallback?
+Prevents unnecessary function recreation.
+
+const save = useCallback(() => {}, []);
+14. Controlled vs Uncontrolled Components?
+Controlled:
+
+<input value={name} onChange={handleChange}/>
+Uncontrolled:
+
+<input ref={inputRef}/>
+15. How do you call a .NET Core API from React?
+useEffect(() => {
+ fetch("https://localhost:5001/api/users")
+   .then(res => res.json())
+   .then(data => setUsers(data));
+}, []);
+.NET Core + React Integration Questions
+1. How do you connect React with ASP.NET Core API?
+Create ASP.NET Core Web API
+
+Enable CORS
+
+Call APIs using Fetch/Axios
+
+2. How do you implement JWT in React?
+Store token:
+
+localStorage.setItem("token", token);
+Send token:
+
+axios.defaults.headers.common[
+ "Authorization"
+] = `Bearer ${token}`;
+3. How do you secure APIs?
+JWT Authentication
+
+Role-based Authorization
+
+HTTPS
+
+Input Validation
+
+SQL Injection Prevention
+
+4. How do you handle exceptions globally in .NET Core?
+app.UseExceptionHandler("/error");
+5. Explain a project architecture you worked on.
+A good answer:
+
+I developed a multi-layer application using ASP.NET Core Web API, Entity Framework Core, SQL Server, and React. React handled UI and API calls using Axios. ASP.NET Core managed business logic, authentication using JWT, and data access through Repository Pattern and EF Core. SQL Server was used as the backend database. The application was deployed on IIS/Azure with CI/CD pipelines.
+
+These are the most commonly asked questions for a 5–8 years .NET Core + React developer interview. Focus especially on JWT, Dependency Injection, Middleware, EF Core, LINQ, React Hooks, Redux, API Security, and System Design, as senior-level interviews often go deeper into those areas.
+
+
+describe in detailsThese are the most commonly asked questions for a 5–8 years .NET Core + React developer interview. Focus especially on JWT, Dependency Injection, Middleware, EF Core, LINQ, React Hooks, Redux, API Security, and System Design, as senior-level interviews often go deeper into those areas.
+
+For a 6+ years Senior Software Engineer (.NET Core + React) interview, these topics are asked very frequently. Interviewers expect not only definitions but also real project usage, architecture decisions, performance optimization, and troubleshooting experience.
+
+1. JWT (JSON Web Token)
+What is JWT?
+JWT is a token-based authentication mechanism used to securely identify users without storing session data on the server.
+
+JWT Structure
+A JWT consists of three parts:
+
+Header.Payload.Signature
+Example:
+
+eyJhbGciOiJIUzI1NiIs...
+Header
+Contains algorithm information.
+
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+Payload
+Contains user claims.
+
+{
+  "UserId": 1,
+  "Name": "Pawan",
+  "Role": "Admin"
+}
+Signature
+Used to verify token authenticity.
+
+JWT Authentication Flow
+React Login Page
+       |
+       v
+.NET Core API
+       |
+ Validate User
+       |
+ Generate JWT
+       |
+ Return Token
+       |
+React Stores Token
+       |
+Send Token in Authorization Header
+       |
+Protected API
+ASP.NET Core JWT Configuration
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters =
+        new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true
+        };
+});
+Interview Question
+Q: Why JWT instead of Session Authentication?
+
+Answer:
+
+Stateless
+
+Scalable
+
+Better for APIs
+
+Works with React, Angular, Mobile Apps
+
+No Server Memory Consumption
+
+2. Dependency Injection (DI)
+What is DI?
+A design pattern where dependencies are injected into classes instead of creating them manually.
+
+Bad:
+
+public class UserController
+{
+    UserService service = new UserService();
+}
+Good:
+
+public class UserController
+{
+    private readonly IUserService _service;
+
+    public UserController(IUserService service)
+    {
+        _service = service;
+    }
+}
+Benefits
+Loose Coupling
+Controller doesn't know implementation details.
+
+Easy Unit Testing
+Mock<IUserService>
+Better Maintainability
+Service Lifetimes
+Transient
+New instance every time.
+
+builder.Services.AddTransient<IUserService, UserService>();
+Scoped
+One instance per request.
+
+builder.Services.AddScoped<IUserService, UserService>();
+Most commonly used.
+
+Singleton
+One instance throughout application.
+
+builder.Services.AddSingleton<IUserService, UserService>();
+Senior-Level Question
+What happens if Singleton uses Scoped Service?
+
+Answer:
+
+Lifetime mismatch issue.
+
+ASP.NET Core throws:
+
+Cannot consume scoped service from singleton
+3. Middleware
+What is Middleware?
+Middleware processes HTTP requests and responses.
+
+Pipeline:
+
+Request
+ |
+Authentication
+ |
+Authorization
+ |
+Custom Middleware
+ |
+Controller
+ |
+Response
+Built-in Middleware
+Authentication
+app.UseAuthentication();
+Authorization
+app.UseAuthorization();
+Routing
+app.MapControllers();
+Custom Middleware Example
+public class RequestLoggingMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public RequestLoggingMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task Invoke(HttpContext context)
+    {
+        Console.WriteLine(context.Request.Path);
+
+        await _next(context);
+    }
+}
+Register:
+
+app.UseMiddleware<RequestLoggingMiddleware>();
+Interview Question
+Difference between Middleware and Filters?
+
+Middleware:
+
+Entire request pipeline
+
+Filters:
+
+MVC action level
+
+4. Entity Framework Core
+What is EF Core?
+ORM (Object Relational Mapper).
+
+Converts:
+
+Database Table
+     ↔
+C# Class
+DbContext
+public class AppDbContext : DbContext
+{
+    public DbSet<User> Users { get; set; }
+}
+CRUD Operations
+Insert
+_context.Users.Add(user);
+await _context.SaveChangesAsync();
+Update
+_context.Users.Update(user);
+await _context.SaveChangesAsync();
+Delete
+_context.Users.Remove(user);
+Tracking vs No Tracking
+Tracking
+_context.Users.ToList();
+Change tracking enabled.
+
+No Tracking
+_context.Users
+.AsNoTracking()
+.ToList();
+Faster for reports.
+
+Lazy Loading
+Loads data when accessed.
+
+user.Orders
+Eager Loading
+_context.Users
+.Include(x => x.Orders)
+.ToList();
+Interview Question
+Why use AsNoTracking?
+
+Answer:
+
+Better Performance
+
+Less Memory
+
+Faster Read Operations
+
+5. LINQ
+What is LINQ?
+Language Integrated Query.
+
+var users =
+    _context.Users
+    .Where(x => x.IsActive);
+Common Operators
+Where
+.Where(x => x.Age > 18)
+Select
+.Select(x => x.Name)
+OrderBy
+.OrderBy(x => x.Name)
+GroupBy
+.GroupBy(x => x.DepartmentId)
+Distinct
+.Distinct()
+Deferred Execution
+Query executes only when needed.
+
+var query = _context.Users.Where(x => x.IsActive);
+
+var result = query.ToList();
+Interview Question
+Difference between IEnumerable and IQueryable?
+
+IEnumerable
+Filtering in memory.
+
+IQueryable
+Filtering in database.
+
+IQueryable<User>
+More efficient.
+
+6. React Hooks
+useState
+const [count, setCount] = useState(0);
+State management.
+
+useEffect
+useEffect(() => {
+   loadUsers();
+}, []);
+Component lifecycle.
+
+useRef
+const inputRef = useRef();
+DOM reference.
+
+useMemo
+Performance optimization.
+
+const total =
+useMemo(() => calculateTotal(), [items]);
+useCallback
+const save =
+useCallback(() => {}, []);
+Avoids function recreation.
+
+Interview Question
+Difference between useMemo and useCallback?
+
+useMemo:
+
+Memoizes value
+
+useCallback:
+
+Memoizes function
+
+7. Redux
+Why Redux?
+State management for large applications.
+
+Without Redux:
+
+Parent
+  |
+Child
+  |
+GrandChild
+Props drilling problem.
+
+Redux Flow
+UI
+ |
+Action
+ |
+Reducer
+ |
+Store
+ |
+UI Update
+Action
+{
+  type: "ADD_USER"
+}
+Reducer
+function reducer(state, action)
+{
+   switch(action.type)
+   {
+      case "ADD_USER":
+   }
+}
+Interview Question
+Redux vs Context API
+
+Context:
+
+Small applications
+
+Redux:
+
+Large enterprise applications
+
+Middleware support
+
+Better debugging
+
+8. API Security
+Authentication
+Verify user.
+
+Who are you?
+Authorization
+Verify permissions.
+
+What can you do?
+Role-Based Authorization
+[Authorize(Roles = "Admin")]
+Protect Against SQL Injection
+Bad:
+
+string query =
+"select * from users where id=" + id;
+Good:
+
+_context.Users
+.Where(x => x.Id == id);
+Protect Against XSS
+React automatically escapes HTML.
+
+Avoid:
+
+dangerouslySetInnerHTML
+unless necessary.
+
+HTTPS
+Always enable:
+
+app.UseHttpsRedirection();
+CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReact",
+    policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+9. System Design (Very Important for 6+ Years)
+Interviewers often ask:
+
+Design an Employee Management System
+Architecture:
+
+React UI
+   |
+ASP.NET Core API
+   |
+Business Layer
+   |
+Repository Layer
+   |
+EF Core
+   |
+SQL Server
+Layers
+Presentation Layer
+React
+
+API Layer
+Controllers
+
+Business Layer
+Services
+
+Data Layer
+Repositories
+
+Database Layer
+SQL Server
+
+Design Questions
+How will you handle 1 million records?
+Answer:
+
+Pagination
+
+.Skip(pageSize * pageNo)
+.Take(pageSize)
+Indexing
+
+Stored Procedures
+
+Caching
+
+How will you improve API performance?
+Answer:
+
+Async/Await
+
+Caching
+
+Pagination
+
+AsNoTracking
+
+Redis Cache
+
+Database Indexes
+
+Response Compression
+
+How will you handle concurrent users?
+Answer:
+
+Load Balancer
+
+Redis Cache
+
+Stateless JWT Authentication
+
+Horizontal Scaling
+
+For a Senior .NET Core + React interview, be ready to explain:
+
+A real project architecture you worked on.
+
+How you implemented JWT authentication.
+
+Complex LINQ queries and EF Core optimization.
+
+Middleware and exception handling.
+
+React Hooks and API integration.
+
+SQL performance tuning (indexes, execution plans, stored procedures).
+
+Scalability and system design decisions.
+
+These topics are asked in almost every 5–8 year .NET Core interview round.
+
+
